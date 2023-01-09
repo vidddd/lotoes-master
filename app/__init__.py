@@ -22,12 +22,13 @@ def create_app(config_name, set_utf=True):
     """App creation factory based on the FLASK_CONFIG env var."""
     if set_utf:
         setdefaultencoding()
+        
     app = Flask(__name__, instance_relative_config=True) 
     app.config.from_object(config[config_name])
-    config[config_name].init_app(app)
     db.init_app(app)
 
-    #login_manager.init_app(app)
+    
+    login_manager.init_app(app)
 
     mount_blueprints(app, config_name)
 

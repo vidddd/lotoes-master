@@ -15,8 +15,5 @@ env = "dev"
 
 app = application.create_app(env)
 
-from app import db 
-print(db)
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5032, debug=True)
