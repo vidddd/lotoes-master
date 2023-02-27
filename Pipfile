@@ -5,6 +5,11 @@ name = "pypi"
 
 [packages]
 flask = "*"
+flask-login = "*"
+flask-sqlalchemy = "*"
+psycopg2 = "*"
+werkzeug = "*"
+jinja2 = "*"
 
 [dev-packages]
 

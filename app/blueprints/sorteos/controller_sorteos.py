@@ -1,5 +1,5 @@
 from flask import Blueprint,render_template, request, current_app, url_for
-from flask_login import login_required
+#from flask_login import login_required
 from .model_sorteo import Sorteo
 
 BP_NM = 'sorteos'
