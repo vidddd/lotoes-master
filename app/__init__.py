@@ -8,10 +8,9 @@ from .mount_blueprints import mount_blueprints
 
 db = SQLAlchemy()
 
-login_manager = LoginManager()
-
-login_manager.session_protection = 'strong'
-login_manager.login_view = 'usuarios.login'
+#login_manager = LoginManager()
+#login_manager.session_protection = 'strong'
+#login_manager.login_view = 'usuarios.login'
 
 def setdefaultencoding():
     if sys.version[0] == '2':
@@ -27,8 +26,7 @@ def create_app(config_name, set_utf=True):
     app.config.from_object(config[config_name])
     db.init_app(app)
 
-    
-    login_manager.init_app(app)
+    #login_manager.init_app(app)
 
     mount_blueprints(app, config_name)
 

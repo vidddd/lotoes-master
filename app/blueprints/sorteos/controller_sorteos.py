@@ -10,12 +10,11 @@ sorteos = Blueprint(BP_NM, __name__, template_folder='templates')
 #@login_required
 def sorteos_index():
     
-    #page = int(request.args.get('page', 1))
+    page = int(request.args.get('page', 1))
     
-    #sorteos = Sorteo.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
+    sorteos = Sorteo.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
 
-    #return render_template('sorteos.html', sorteos=sorteos, seccion="sorteos")
-    return render_template('sorteos.html')
+    return render_template('sorteos.html', sorteos=sorteos, seccion="sorteos")
 
 @sorteos.errorhandler(404)
 def page_not_found(e):

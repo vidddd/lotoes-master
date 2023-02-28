@@ -3,7 +3,7 @@ from app import db
 from sqlalchemy.dialects.postgresql import JSON
 
 class Sorteo(db.Model):
-    __tablename__ = 'sorteo'
+    __tablename__ = 'sorteos'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100))
     fecha_sorteo = db.Column(db.String(20))
