@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb"><li><a href="/">Dashboard</a></li><li class="active">Clientes</li>
+</ol>
+<h1>Nuevo Cliente</h1>
+<div class="row">
+    <div class="col-md-12">
+        <form role="form" id="cliente-new" name="cliente-new" method="POST">
+            <div class="row">
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.nombre.label }} {{ form.nombre(class='form-control') }}                
+              </div>
+            </div>
+            <div class="row templatemo-form-buttons">
+                <div class="col-md-12">
+
+                    {{ form.submit() }}
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <button type="reset" class="btn btn-default">Reset</button>    
+                </div>
+            </div>{{ form.csrf_token }}
+        </form>
+    </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <span class="btn btn-success"><a href="/clientes">Clientes</a></span>
+  </div>
+</div>
+{% endblock %}

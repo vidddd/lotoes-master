@@ -20,7 +20,7 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>First Name</th>
+                      <th>Nombre</th>
                       <th>Last Name</th>
                       <th>Username</th>
                       <th>Email</th>
@@ -28,10 +28,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {% for clientes in clientes.items %}
+                    {% for cliente in clientes.items %}
                     <tr>
-                      <td></td>
-                      <td></td>
+                      <td>{{ cliente.id }}</td>
+                      <td>{{ cliente.nombre }}</td>
                       <td></td>
                       <td></td>
                       <td></td>                  
@@ -52,28 +52,6 @@
                       </td>
                     </tr>   
                     {% endfor %}
-                    <tr>
-                      <td>1</td>
-                      <td>John</td>
-                      <td>Henry</td>
-                      <td>@jh</td>
-                      <td>a@company.com</td>                
-                      <td>
-                        <!-- Split button -->
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-info">Action</button>
-                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Bootstrap</a></li>
-                            <li><a href="#">Font Awesome</a></li>
-                            <li><a href="#">jQuery</a></li>
-                          </ul>
-                        </div>
-                      </td>
-                    </tr>   
                   </tbody>
                 </table>
               </div>
