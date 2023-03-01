@@ -68,7 +68,7 @@ class Sorteo(db.Model):
 class LoteriaNacionalCombinacion(db.Model):
     #__tablename__ = 'loteria_nacional_combinacion'
     id = db.Column(db.Integer, primary_key=True)
-    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteo.id'),nullable=False, unique=True)
+    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False, unique=True)
     primer_premio = db.Column(db.Integer)
     segundo_premio = db.Column(db.Integer)
     tercer_premio = db.Column(db.Integer)
@@ -80,7 +80,7 @@ class LoteriaNacionalCombinacion(db.Model):
 class BonolotoCombinacion(db.Model):
     #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
-    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteo.id'),nullable=False)
+    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -93,7 +93,7 @@ class BonolotoCombinacion(db.Model):
 class PrimitivaCombinacion(db.Model):
     #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
-    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteo.id'),nullable=False)
+    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -106,7 +106,7 @@ class PrimitivaCombinacion(db.Model):
 class EuromillonesCombinacion(db.Model):
     #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
-    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteo.id'),nullable=False)
+    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -118,7 +118,7 @@ class EuromillonesCombinacion(db.Model):
 class GordoPrimitivaCombinacion(db.Model):
     #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
-    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteo.id'),nullable=False)
+    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -129,7 +129,7 @@ class GordoPrimitivaCombinacion(db.Model):
 class QuinielaPartidos(db.Model):
     #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
-    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteo.id'),nullable=False)
+    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     local = db.Column(db.String(60))
     visitante = db.Column(db.String(60))
     signo = db.Column(db.String(8))
@@ -138,7 +138,7 @@ class QuinielaPartidos(db.Model):
 class QuinigolPartidos(db.Model):
     #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
-    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteo.id'),nullable=False)
+    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     local = db.Column(db.String(60))
     visitante = db.Column(db.String(60))
     signo = db.Column(db.String(8))
@@ -147,7 +147,7 @@ class QuinigolPartidos(db.Model):
 class LototurfCombinacion(db.Model):
     #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
-    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteo.id'),nullable=False)
+    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -160,7 +160,7 @@ class LototurfCombinacion(db.Model):
 class QuintupleplusCombinacion(db.Model):
     #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
-    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteo.id'),nullable=False)
+    sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)

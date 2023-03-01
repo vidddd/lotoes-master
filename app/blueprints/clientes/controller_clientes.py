@@ -1,4 +1,4 @@
-from flask import Blueprint,render_template, request, current_app, url_for
+from flask import Blueprint,render_template, redirect, request, current_app, url_for
 #from flask_login import login_required
 from .model_cliente import Cliente
 from .form_cliente import ClienteForm
@@ -23,6 +23,7 @@ def clientes_new():
         cliente = Cliente()
         form.populate_obj(cliente)
         cliente.save()
+        return redirect(url_for('clientes.clientes_index'))
     return render_template('clientes_new.html', form=form, seccion="clientes")
 
 @clientes.errorhandler(404)
