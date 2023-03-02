@@ -12,7 +12,7 @@ class Cliente(db.Model):
     clasificacion_interna = db.Column(db.SmallInteger())
     es_empresa = db.Column(db.Boolean)
     persona_contacto = db.Column(db.String(256))
-    #tipo_documento = db.Column(db.SmallInteger(), nullable=False)
+    tipo_documento = db.Column(db.SmallInteger())
     documento = db.Column(db.String(25), nullable=False)
     telefono = db.Column(db.String(15))
     movil = db.Column(db.String(15))

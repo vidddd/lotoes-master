@@ -12,6 +12,7 @@ werkzeug = "*"
 jinja2 = "*"
 flask-wtf = "*"
 flask-migrate = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
