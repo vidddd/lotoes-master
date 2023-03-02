@@ -8,7 +8,7 @@ from app import db
 class Usuario(db.Model):
     __tablename__ = 'usuarios'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
+    username = db.Column(db.String(50))
     password = db.Column(db.String(80))
     email = db.Column(db.String(100))
     is_admin = db.Column(db.Boolean)
@@ -17,7 +17,7 @@ class Usuario(db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<Usuario %r>' % self.username
     
     def __init__(self, id, nombre, password, email, is_admin=False):
         self.id = id

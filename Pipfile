@@ -11,6 +11,7 @@ psycopg2 = "*"
 werkzeug = "*"
 jinja2 = "*"
 flask-wtf = "*"
+flask-migrate = "*"
 
 [dev-packages]
 
