@@ -29,7 +29,32 @@
       
       <div class="templatemo-content-wrapper">
         <div class="templatemo-content">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+              {{ message }}
+            </div>
+            {% endfor %}
+
             {% block content %}{% endblock %}
+            <div class="col-md-12">
+              <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <strong>Success!</strong> Maecenas non lorem sed elit molestie tincidunt.
+              </div>
+              <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                Sed in molestie lectus. Curabitur non est neque. Maecenas id luctus ligula.
+              </div>
+              <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                Vestibulum tincidunt libero urna, ut dignissim purus accumsan nec.
+              </div>
+              <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                Mauris dignissim ante eu arcu ultricies, at sodales orci aliquet.
+              </div>            
+            </div>
         </div>
       </div>
       <!-- Modal -->

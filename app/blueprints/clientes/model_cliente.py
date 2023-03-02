@@ -1,17 +1,18 @@
 #!/usr/bin/python
 from app import db
-from sqlalchemy.dialects.postgresql import JSON
+from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 
 class Cliente(db.Model):
     __tablename__ = 'clientes'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100), nullable=False)
+    apellidos = db.Column(db.String(100), nullable=False)
     tipo_cliente = db.Column(db.SmallInteger())
     clasificacion_interna = db.Column(db.SmallInteger())
     es_empresa = db.Column(db.Boolean)
     persona_contacto = db.Column(db.String(256))
-    tipo_documento = db.Column(db.SmallInteger(), nullable=False)
+    #tipo_documento = db.Column(db.SmallInteger(), nullable=False)
     documento = db.Column(db.String(25), nullable=False)
     telefono = db.Column(db.String(15))
     movil = db.Column(db.String(15))

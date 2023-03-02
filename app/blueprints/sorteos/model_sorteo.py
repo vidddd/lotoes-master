@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from app import db
 from sqlalchemy.dialects.postgresql import JSON
+from sqlalchemy.exc import IntegrityError
 
 class Sorteo(db.Model):
     __tablename__ = 'sorteos'

@@ -13,18 +13,23 @@
               <div class="col-md-6 margin-bottom-15">
                 {{ form.nombre.label }} {{ form.nombre(class='form-control') }}                
               </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.apellidos.label }} {{ form.apellidos(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.documento.label }} {{ form.documento(class='form-control') }}                
+              </div>
             </div>
             <div class="row templatemo-form-buttons">
                 <div class="col-md-12">
-
-                    {{ form.submit() }}
-                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  {{ form.submit(class='btn btn-primary') }}
                   <button type="reset" class="btn btn-default">Reset</button>    
                 </div>
             </div>{{ form.csrf_token }}
         </form>
     </div>
 </div>
+<hr/>
 <div class="row">
   <div class="col-md-12">
     <span class="btn btn-success"><a href="/clientes">Clientes</a></span>

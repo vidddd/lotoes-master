@@ -1,6 +1,7 @@
 #from flask_login import UserMixin
 #from flask_login import login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 from app import db
 
