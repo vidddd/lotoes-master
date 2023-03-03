@@ -13,6 +13,7 @@ jinja2 = "*"
 flask-wtf = "*"
 flask-migrate = "*"
 python-dotenv = "*"
+flask-mail = "*"
 
 [dev-packages]
 

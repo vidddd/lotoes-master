@@ -6,9 +6,11 @@ from flask_login import LoginManager
 from config.config import config
 from .mount_blueprints import mount_blueprints
 from flask_migrate import Migrate
+from flask_mail import Mail
 
 db = SQLAlchemy()
 migrate = Migrate()
+mail = Mail()
 #login_manager = LoginManager()
 #login_manager.session_protection = 'strong'
 #login_manager.login_view = 'usuarios.login'
@@ -27,6 +29,7 @@ def create_app(config_name, set_utf=True):
     app.config.from_object(config[config_name])
     db.init_app(app)
     migrate.init_app(app, db)
+    mail.init_app(app)
     #login_manager.init_app(app)
 
     mount_blueprints(app, config_name)

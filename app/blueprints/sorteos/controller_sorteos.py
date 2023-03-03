@@ -11,9 +11,7 @@ sorteos = Blueprint(BP_NM, __name__, template_folder='templates')
 def sorteos_index():
     
     page = int(request.args.get('page', 1))
-    
     sorteos = Sorteo.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
-
     return render_template('sorteos.html', sorteos=sorteos, seccion="sorteos")
 
 @sorteos.errorhandler(404)
