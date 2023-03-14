@@ -105,4 +105,3 @@ ENV/
 *.iml
 .DS_Store
 
-config/

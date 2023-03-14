@@ -13,8 +13,8 @@ dashboard = Blueprint(BP_NM, __name__, template_folder='templates')
 def dashboard_func():
    
     send_email(subject='Holaaa',
-                       sender=current_app.config['MAIL_FROM'],
-                       recipients=[current_app.config['MAIL_SEND']],
+                       sender=current_app.config['LOTOES_MAIL_FROM'],
+                       recipients=[current_app.config['LOTOES_MAIL_SEND']],
                        text_body=f'Hola estas es dashboard',
                        html_body=f'Hola estas es dashboard')
 

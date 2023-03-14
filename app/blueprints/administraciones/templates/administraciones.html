@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+
+{% block title %}Administraciones{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+            <li><a href="/">Dashboard</a></li>
+            <li class="active">Administraciones</li>
+          </ol>
+          <h1>Administraciones</h1>
+          <div class="row margin-bottom-30">
+            <div class="col-md-12">
+              <ul class="nav nav-pills">
+                <li class="active"><a href="#">New Users <span class="badge">42</span></a></li>
+                <li><a href="#">Active Users <span class="badge">107</span></a></li>
+                <li><a href="#">Expired Users <span class="badge">3</span></a></li>
+              </ul>          
+            </div>
+          </div> 
+          <div class="row">
+            <div class="col-md-12">
+              <div class="btn-group pull-right" id="templatemo_sort_btn">
+                <button type="button" class="btn btn-default">Sort by</button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">First Name</a></li>
+                  <li><a href="#">Last Name</a></li>
+                  <li><a href="#">Username</a></li>
+                </ul>
+              </div>
+              <div class="table-responsive">
+                <h4 class="margin-bottom-15"></h4>
+                <table class="table table-striped table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nombre</th>
+                      <th>Contacto</th>
+                      <th>codigoSelae</th>
+                      <th>telefono</th>
+                      <th>Email</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for administracion in administraciones.items %}
+                    <tr>
+                      <td>{{ administracion.id }}</td>
+                      <td>{{ administracion.nombre }}</td>
+                      <td>{{ administracion.contacto }}</td>
+                      <td>{{ administracion.codigoSelae }}</td>
+                      <td>{{ administracion.telefono }}</td>
+                      <td>{{ administracion.email }}</td>                 
+                      <td>
+                          <button type="button" class="btn btn-info">Editar</button>
+                      </td>
+                    </tr>   
+                    {% endfor %}  
+                  </tbody>
+                </table>
+              </div>
+              <ul class="pagination pull-right">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">4 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">5 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>  
+            </div>
+          </div>
+
+{% endblock %}
