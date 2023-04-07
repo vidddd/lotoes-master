@@ -9,27 +9,24 @@
             <li class="active">Sorteos</li>
           </ol>
           <h1>Sorteos</h1>
-          <div class="row margin-bottom-30">
-            <div class="col-md-12">
-              <ul class="nav nav-pills">
-                <li class="active"><a href="#">New Users <span class="badge">42</span></a></li>
-                <li><a href="#">Active Users <span class="badge">107</span></a></li>
-                <li><a href="#">Expired Users <span class="badge">3</span></a></li>
-              </ul>          
-            </div>
-          </div> 
           <div class="row">
             <div class="col-md-12">
               <div class="btn-group pull-right" id="templatemo_sort_btn">
-                <button type="button" class="btn btn-default">Sort by</button>
+                <button type="button" class="btn btn-default">Filtro</button>
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
-                  <span class="sr-only">Toggle Dropdown</span>
+                  <span class="sr-only">Filtro</span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">First Name</a></li>
-                  <li><a href="#">Last Name</a></li>
-                  <li><a href="#">Username</a></li>
+                  <li><a href="#">Loteria Nacional</a></li>
+                  <li><a href="#">Primitiva</a></li>
+                  <li><a href="#">Bonoloto</a></li>
+                  <li><a href="#">Gordo Primitiva</a></li>
+                  <li><a href="#">Euromillones</a></li>
+                  <li><a href="#">Quiniela</a></li>
+                  <li><a href="#">Quinigol</a></li>
+                  <li><a href="#">Lototurf</a></li>
+                  <li><a href="#">Quintuple Plus</a></li>
                 </ul>
               </div>
               <div class="table-responsive">
@@ -38,21 +35,23 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>First Name</th>
-                      <th>Last Name</th>
-                      <th>Username</th>
-                      <th>Email</th>
+                      <th>Nombre</th>
+                      <th>Fecha Sorteo</th>
+                      <th>Dia Semana</th>
+                      <th>Game id</th>
+                      <th>Número Sorteo</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for sorteo in sorteos.items %}
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>                  
+                      <td>{{ sorteo.id }}</td>
+                      <td>{{ sorteo.nombre }}</td>
+                      <td>{{ sorteo.fecha_sorteo }}</td>
+                      <td>{{ sorteo.dia_semana }}</td>
+                      <td>{{ sorteo.game_id }}</td>
+                      <td>{{ sorteo.numero_sorteo }}</td>             
                       <td>
                         <!-- Split button -->
                         <div class="btn-group">
@@ -70,28 +69,6 @@
                       </td>
                     </tr>   
                     {% endfor %}
-                    <tr>
-                      <td>1</td>
-                      <td>John</td>
-                      <td>Henry</td>
-                      <td>@jh</td>
-                      <td>a@company.com</td>                
-                      <td>
-                        <!-- Split button -->
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-info">Action</button>
-                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Bootstrap</a></li>
-                            <li><a href="#">Font Awesome</a></li>
-                            <li><a href="#">jQuery</a></li>
-                          </ul>
-                        </div>
-                      </td>
-                    </tr>   
                   </tbody>
                 </table>
               </div>

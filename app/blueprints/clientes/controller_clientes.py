@@ -26,11 +26,3 @@ def clientes_new():
         flash('Cliente añadido correctamente!')
         return redirect(url_for('clientes.clientes_index'))
     return render_template('clientes_new.html', form=form, seccion="clientes")
-
-@clientes.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html')
-
-@clientes.errorhandler(500)
-def internal_server_error(e):
-    return render_template('500.html'), 500

@@ -13,11 +13,3 @@ def sorteos_index():
     page = int(request.args.get('page', 1))
     sorteos = Sorteo.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
     return render_template('sorteos.html', sorteos=sorteos, seccion="sorteos")
-
-@sorteos.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html')
-
-@sorteos.errorhandler(500)
-def internal_server_error(e):
-    return render_template('500.html'), 500

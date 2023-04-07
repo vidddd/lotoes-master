@@ -7,6 +7,7 @@ from config.config import config
 from .mount_blueprints import mount_blueprints
 from flask_migrate import Migrate
 from flask_mail import Mail
+from .extensions import register_error_handlers, configure_logging
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -33,8 +34,7 @@ def create_app(config_name, set_utf=True):
     #login_manager.init_app(app)
 
     mount_blueprints(app, config_name)
-
-    #register_error_handlers(app)
+    register_error_handlers(app)
     #configure_logging(app)
 
     return app

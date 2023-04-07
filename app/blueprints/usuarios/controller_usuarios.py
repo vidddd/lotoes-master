@@ -16,11 +16,3 @@ def usuarios_index():
 
     #return render_template('usuarios.html', usuarios=usuarios, seccion="usuarios")
     return render_template('usuarios.html')
-
-@usuarios.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html')
-
-@usuarios.errorhandler(500)
-def internal_server_error(e):
-    return render_template('500.html'), 500

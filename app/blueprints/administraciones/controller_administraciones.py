@@ -26,11 +26,3 @@ def administraciones_new():
         flash('Administracion añadido correctamente!')
         return redirect(url_for('administraciones.administraciones_index'))
     return render_template('administraciones_new.html', form=form, seccion="administraciones")
-
-@administraciones.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html')
-
-@administraciones.errorhandler(500)
-def internal_server_error(e):
-    return render_template('500.html'), 500

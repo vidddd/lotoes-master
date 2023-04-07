@@ -14,7 +14,7 @@ class Administracion(db.Model):
     web = db.Column(db.String(150))
     direccion = db.Column(db.String(256))
     municipio = db.Column(db.String(256))
-    cp = db.Column(db.Integer, nullable=False)
+    cp = db.Column(db.Integer)
     notas = db.Column(db.Text)
     provincia_id = db.Column(db.SmallInteger, db.ForeignKey('provincias.id', ondelete='CASCADE'))
     provincia = db.relationship('Provincia',backref=db.backref('provincias', lazy=True))
