@@ -6,6 +6,9 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     APP_NAME = 'Lotoes Master'
+    
+    FLASK_ENV = 'development'
+
     SECRET_KEY = os.getenv('SECRET_KEY', default='')
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -50,6 +53,8 @@ class TestConfig(DevConfig):
 
 
 class ProdConfig(Config):
+
+    FLASK_ENV = 'production'
     DEBUG = False
     APP_ENV = 'prod'
     TESTING = False
