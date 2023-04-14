@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block title %}Importers{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+            <li><a href="/">Dashboard</a></li>
+            <li class="active">Importers</li>
+          </ol>
+          <h1>Importers</h1>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="btn-group pull-right" id="templatemo_sort_btn">
+                <span class="btn btn-success"><a href="/clientes/new">Nuevo Importer</a></span>
+              </div>
+              <div class="table-responsive">
+                <h4 class="margin-bottom-15"></h4>
+                <table class="table table-striped table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nombre</th>
+                      <th>Apellidos</th>
+                      <th>Documento</th>
+                      <th>Email</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+              </div>
+              <ul class="pagination pull-right">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">4 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">5 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>  
+            </div>
+          </div>
+
+{% endblock %}

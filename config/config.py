@@ -6,8 +6,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     APP_NAME = 'Lotoes Master'
-    
-    FLASK_ENV = 'development'
 
     SECRET_KEY = os.getenv('SECRET_KEY', default='')
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
@@ -22,8 +20,6 @@ class Config:
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD', default='')
     MAIL_DEFAULT_SENDER = os.getenv('MAIL_USERNAME', default='')
     MAIL_ASCII_ATTACHMENTS = True
-    CACHE = True
-    DEBUG = False
 
     LOTOES_MAIL_SEND = os.getenv('LOTOES_MAIL_SEND', default='')
     LOTOES_MAIL_FROM = os.getenv('LOTOES_MAIL_FROM', default='')
@@ -34,32 +30,14 @@ class Config:
 
 
 class DevConfig(Config):
-    DEBUG = True
-    APP_ENV = 'dev'
-    #SQLALCHEMY_ECHO = True
-    CACHE = False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL')
 
 
 class TestConfig(DevConfig):
-    DEBUG = True
-    APP_ENV = 'test'
-    TESTING = True
-    WTF_CSRF_ENABLED = False
-    CSRF_ENABLED = False
-    SQLALCHEMY_ECHO = False
-    CACHE = False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL')
 
 
 class ProdConfig(Config):
-
-    FLASK_ENV = 'production'
-    DEBUG = False
-    APP_ENV = 'prod'
-    TESTING = False
-    WTF_CSRF_ENABLED = True
-    CSRF_ENABLED = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL')
 
 

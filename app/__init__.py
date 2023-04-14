@@ -1,5 +1,5 @@
 """Flask application creation factory."""
-import sys
+import sys, os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -21,10 +21,12 @@ def setdefaultencoding():
         reload(sys)
         sys.setdefaultencoding('utf-8')
 
-def create_app(config_name, set_utf=True):
+def create_app(set_utf=True):
     """App creation factory based on the FLASK_CONFIG env var."""
     if set_utf:
         setdefaultencoding()
+    
+    config_name = os.getenv('FLASK_CONFIG') or 'default'
 
     app = Flask(__name__, instance_relative_config=True) 
     app.config.from_object(config[config_name])
