@@ -28,7 +28,12 @@
                     </tr>
                   </thead>
                   <tbody>
-
+                    {% for importer in importers.items %}
+                    <tr>
+                      <td>{{ importer.id }}</td>
+                
+                    </tr>   
+                    {% endfor %}
                   </tbody>
                 </table>
               </div>
