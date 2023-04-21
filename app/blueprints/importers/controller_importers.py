@@ -1,19 +1,55 @@
 from flask import Blueprint, render_template, redirect, request, current_app, url_for, flash
 import click
 from .model_importer import Importer
+from .form_importers import ImporterForm
+from config.lotoes_config import tipos_sorteo
 #from flask_login import login_required
 
 BP_NM = 'importers'
-
 importers = Blueprint(BP_NM, __name__, template_folder='templates')
  
 @importers.route('/')
 #@login_required
 def importers_index():
-    
     page = int(request.args.get('page', 1))
     importers = Importer.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
-    return render_template('importers.html', importers=importers)
+    return render_template('importers.html', importers=importers, tipos_sorteo=tipos_sorteo)
+
+""" NEW / EDIT """
+@importers.route('/form', methods=['GET', 'POST'], defaults={'importer_id': None})
+@importers.route('/form/<int:importer_id>', methods=['GET', 'POST'])
+#@login_required
+def importer_form(importer_id=None):
+    if importer_id:
+        importer = Importer.get_by_id(importer_id)
+        if importer is None:
+            raise NotFound(importer_id)
+        form = ImporterForm(obj=importer)
+    else:
+        importer = Importer()
+        form = ImporterForm()
+    if form.validate_on_submit():
+        form.populate_obj(importer)
+        importer.save()
+        flash('Importer creado / actualizado correctamente!')
+        return redirect(url_for('importers.importers_index'))
+    return render_template('form_importers.html', form=form, seccion='importers')
+
+
+""" ACTIVE / DEACTIVE """
+@importers.route('/active-deactive/<int:importer_id>', methods=['GET', 'POST'])
+def importer_active_deactive(importer_id):
+    flash('Importer activado correctamente!')
+    return redirect(url_for('importers.importers_index'))
+
+""" DELETE """
+@importers.route('/delete/<int:importer_id>', methods=['GET', 'POST'])
+def importer_delete(importer_id):
+    importer = Importer.get_by_id(importer_id)
+    importer.delete()
+    flash('Importer borrado correctamente!')
+    return redirect(url_for('importers.importers_index'))
+
 
 '''
     Comando para importar sorteos

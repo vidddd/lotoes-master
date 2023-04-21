@@ -12,7 +12,18 @@
           <div class="row">
             <div class="col-md-12">
               <div class="btn-group pull-right" id="templatemo_sort_btn">
-                <span class="btn btn-success"><a href="/clientes/new">Nuevo Importer</a></span>
+                <span class="btn btn-success"><a href="/importers/form">Nuevo Importer</a></span>
+                <button type="button" class="btn btn-default">Filtro</button>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Filtro</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    {% for tipo in tipos_sorteo %}
+                        {{ tipo }}
+                      <li><a href="#">Loteria Nacional</a></li>
+                    {% endfor %}
+                  </ul>
               </div>
               <div class="table-responsive">
                 <h4 class="margin-bottom-15"></h4>
@@ -21,9 +32,12 @@
                     <tr>
                       <th>#</th>
                       <th>Nombre</th>
-                      <th>Apellidos</th>
-                      <th>Documento</th>
-                      <th>Email</th>
+                      <th>Tipo Sorteo</th>
+                      <th>Url</th>
+                      <th>Actualizar Existentes</th>
+                      <th>Parámetro Fecha</th>
+                      <th>Activo</th>
+                      <th>Dias</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -31,7 +45,25 @@
                     {% for importer in importers.items %}
                     <tr>
                       <td>{{ importer.id }}</td>
-                
+                      <td>{{ importer.nombre }}</td>
+                      <td>{{ importer.tipo_sorteo }}</td>
+                      <td>{{ importer.url }}</td>
+                      <td>{{ importer.actualizar_existentes }}</td>
+                      <td>{{ importer.parametro_fecha }}</td>
+                      <td>{{ importer.activo }}</td>
+                      <td>{{ importer.dias }}</td>
+                      <td><div class="btn-group">
+                        <button type="button" class="btn btn-info">Action</button>
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                          <span class="caret"></span>
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a title="Editar" href="{{ url_for('importers.importer_form', importer_id=importer.id) }}">Editar</a></li>
+                          <li><a title="Activar / Desactivar" href="{{ url_for('importers.importer_active_deactive', importer_id=importer.id) }}">Activar/Desactivar</a></li>
+                          <li><a title="Borrar" href="{{ url_for('importers.importer_delete', importer_id=importer.id) }}" onclick="return confirm('Estas Seguro? esta accion no se puede desacer.');">Borrar</a></li>
+                        </ul>
+                      </div></td>
                     </tr>   
                     {% endfor %}
                   </tbody>
