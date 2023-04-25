@@ -19,9 +19,8 @@
                     <span class="sr-only">Filtro</span>
                   </button>
                   <ul class="dropdown-menu" role="menu">
-                    {% for tipo in tipos_sorteo %}
-                        {{ tipo }}
-                      <li><a href="#">Loteria Nacional</a></li>
+                    {% for key, value in tipos_sorteo %}
+                      <li><a href="{{ key }}">{{ value }}</a></li>
                     {% endfor %}
                   </ul>
               </div>

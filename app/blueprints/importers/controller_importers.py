@@ -3,6 +3,8 @@ import click
 from .model_importer import Importer
 from .form_importers import ImporterForm
 from config.lotoes_config import tipos_sorteo
+from app.common.importing_sorteos import ImportingSorteos
+
 #from flask_login import login_required
 
 BP_NM = 'importers'
@@ -59,9 +61,12 @@ def importer_delete(importer_id):
 @importers.cli.command('import')
 @click.argument('tipo_sorteo', required=False)
 def importing(tipo_sorteo=None):
+
+    importing = ImportingSorteos()
+
     #con argumento importamos un tipo de sorteo especifico
     if tipo_sorteo is not None:
         print(tipo_sorteo)
     # sin argumento importamos todos
     else:
-        print('importando todos')
+        importing.importingAll()

@@ -18,15 +18,9 @@
                   <span class="sr-only">Filtro</span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Loteria Nacional</a></li>
-                  <li><a href="#">Primitiva</a></li>
-                  <li><a href="#">Bonoloto</a></li>
-                  <li><a href="#">Gordo Primitiva</a></li>
-                  <li><a href="#">Euromillones</a></li>
-                  <li><a href="#">Quiniela</a></li>
-                  <li><a href="#">Quinigol</a></li>
-                  <li><a href="#">Lototurf</a></li>
-                  <li><a href="#">Quintuple Plus</a></li>
+                  {% for key, value in tipos_sorteo %}
+                    <li><a href="{{ key }}">{{ value }}</a></li>
+                  {% endfor %}
                 </ul>
               </div>
               <div class="table-responsive">
@@ -36,6 +30,7 @@
                     <tr>
                       <th>#</th>
                       <th>Nombre</th>
+                      <th>Id Sorteo</th>
                       <th>Fecha Sorteo</th>
                       <th>Dia Semana</th>
                       <th>Game id</th>
@@ -48,6 +43,7 @@
                     <tr>
                       <td>{{ sorteo.id }}</td>
                       <td>{{ sorteo.nombre }}</td>
+                      <td>{{ sorteo.id_sorteo }}</td>
                       <td>{{ sorteo.fecha_sorteo }}</td>
                       <td>{{ sorteo.dia_semana }}</td>
                       <td>{{ sorteo.game_id }}</td>

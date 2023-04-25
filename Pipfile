@@ -14,6 +14,7 @@ flask-wtf = "*"
 flask-migrate = "*"
 python-dotenv = "*"
 flask-mail = "*"
+requests = "*"
 
 [dev-packages]
 

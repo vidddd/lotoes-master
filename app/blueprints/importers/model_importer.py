@@ -37,6 +37,11 @@ class Importer(db.Model):
     def get_by_id(id):
         return Importer.query.get(id)
 
+    @staticmethod
+    def get_all_activos():
+        return Importer.query.filter_by(activo=True)
+
+
     def delete(self):
         db.session.delete(self)
         db.session.commit()
