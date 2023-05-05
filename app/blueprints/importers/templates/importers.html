@@ -20,7 +20,7 @@
                   </button>
                   <ul class="dropdown-menu" role="menu">
                     {% for key, value in tipos_sorteo %}
-                      <li><a href="{{ key }}">{{ value }}</a></li>
+                      <li><a href="{{ url_for('importers.importer_tipo_sorteo', tipo_sorteo=key ) }}">{{ value }}</a></li>
                     {% endfor %}
                   </ul>
               </div>
@@ -41,7 +41,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {% for importer in importers.items %}
+                    {% for importer in importers %}
                     <tr>
                       <td>{{ importer.id }}</td>
                       <td>{{ importer.nombre }}</td>

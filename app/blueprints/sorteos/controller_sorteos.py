@@ -14,3 +14,12 @@ def sorteos_index():
     page = int(request.args.get('page', 1))
     sorteos = Sorteo.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
     return render_template('sorteos.html', sorteos=sorteos, seccion="sorteos", tipos_sorteo=tipos_sorteo)
+
+
+@sorteos.route('/sorteo/<int:sorteo_id>')
+#@login_required
+def sorteo(sorteo_id):
+    sorteo = Sorteo.get_by_id(sorteo_id)
+    if sorteo is None:
+        raise NotFound(sorteo_id)
+    return render_template('sorteo.html', sorteo=sorteo, seccion='sorteos')

@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+
+{% block title %}Sorteos{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb"><li><a href="/">Dashboard</a></li><li class="active">Sorteos</li>
+          </ol>
+          <h1>Sorteos</h1>
+          <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6 col-sm-6 margin-bottom-30">
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">{{ sorteo.nombre }}</div>
+                      <div class="panel-body">
+                        <div class="list-group">
+                          Nombre: <a href="#" class="list-group-item disabled"> {{ sorteo.nombre }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.id_sorteo }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.dia_semana }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.nombre }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.game_id }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.anyo }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.numero_sorteo }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.lugar }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.premio_bote }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.cdc }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.apuestas }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.recaudacion }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.combinacion_json }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.premios }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.fondo_bote }}</a>
+                          <a href="#" class="list-group-item">{{ sorteo.escrutinio }}</a>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="btn btn-primary"><a href="/sorteos">Sorteos</a></span>
+                  </div>
+            </div>
+          </div>
+
+{% endblock %}

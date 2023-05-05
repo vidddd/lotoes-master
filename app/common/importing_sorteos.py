@@ -6,6 +6,8 @@ from sqlalchemy import exc, text
 import requests,json
 from pprint import pprint
 from app.extensions import var_dump
+from app.common.mail import send_email
+
 """
 Importing Sorteos
 """
@@ -30,7 +32,10 @@ class ImportingSorteos():
             if type(result) is list:
                 for sorteo in result:
                     sorteo_id = Sorteo.exists(sorteo.get('id_sorteo'))
+                    print(sorteo.get('combinacion'))
+                    print(sorteo_id)
                     if(sorteo_id): #ya existe
+                        print('existe')
                         id_sorteo=sorteo.get('id_sorteo')
                         su = Sorteo.query.filter_by(id_sorteo=id_sorteo).first()
                         if su:
@@ -41,7 +46,6 @@ class ImportingSorteos():
                             su.fondo_bote=sorteo.get('fondo_bote')
                             su.escrutinio=sorteo.get('escrutinio')
                             su.apuestas=sorteo.get('apuestas')
-                            
                             if(su.game_id == 'LNAC'):
                                 lnaccomb = LoteriaNacionalCombinacion(
                                     sorteo_id = sorteo_id,
@@ -50,13 +54,14 @@ class ImportingSorteos():
                                     tercer_premio = sorteo.get('combinacion').get('tercer_premio'),
                                     fraccion = sorteo.get('combinacion').get('fraccion'),
                                     serie = sorteo.get('combinacion').get('serie'))
-                                db.session.add(lnaccomb)
-                        
+                                db.session.merge(lnaccomb)
+                           
                             if(su.game_id == 'BONO'):
-                                '''combinacion = sorteo.get('combinacion')
-                                print(combinacion)
-                                x = re.split(r"^[0-9][0-9].\-.[0-9][0-9].\-.[0-9][0-9].\-.[0-9][0-9].\-.[0-9][0-9].\-.[0-9][0-9].$", combinacion) 
-                                print(x) '''
+
+                                #combinacion = sorteo.get('combinacion')
+                                #print(combinacion)
+                                #x = re.split(r"^[0-9][0-9].\-.[0-9][0-9].\-.[0-9][0-9].\-.[0-9][0-9].\-.[0-9][0-9].\-.[0-9][0-9].$", combinacion) 
+                                #print(x) '''
                                 
                                 #bonocomb = BonolotoCombinacion(
                                 #        sorteo_id = sorteo_id,
@@ -70,7 +75,7 @@ class ImportingSorteos():
                                 #db.session.add(bonocomb)
                         
                     
-                                if(su.game_id == 'LAPR'):
+                                '''if(su.game_id == 'LAPR'):
                                     combinacion = sorteo.get('combinacion')
                                     #print(combinacion) # 03 - 12 - 19 - 24 - 30 - 02 - 05
                                 
@@ -99,13 +104,17 @@ class ImportingSorteos():
                                     #print('QUPL')
                                     
                                 db.session.add(su)
-                    
+                                '''
                                 try:
                                     db.session.commit()
                                     print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                                 except exc.SQLAlchemyError as e:
+                                    send_email(subject='Error - Lotoes Master',
+                                        sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],
+                                        text_body=f'Hola estas es dashboard',
+                                        html_body=f'Hola estas es dashboard')
                                     print('Error - update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
-                                    print(str(e.__dict__['orig']))
+                                    print(str(e.__dict__['orig'])) 
 
                     else:  #nuevo sorteo
                         s = Sorteo(
@@ -131,6 +140,10 @@ class ImportingSorteos():
                             db.session.commit()
                             print('add '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                         except exc.SQLAlchemyError as e:
+                            send_email(subject='Error - Lotoes Master',
+                                sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],
+                                text_body=f'Hola estas es dashboard',
+                                html_body=f'Hola estas es dashboard')
                             print('Error - add '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                             print(str(e.__dict__['orig']))
 

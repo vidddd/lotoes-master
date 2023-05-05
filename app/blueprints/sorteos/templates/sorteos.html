@@ -28,28 +28,35 @@
                 <table class="table table-striped table-hover table-bordered">
                   <thead>
                     <tr>
-                      <th>#</th>
-                      <th>Nombre</th>
                       <th>Id Sorteo</th>
+                      <th>Nombre</th>
                       <th>Fecha Sorteo</th>
                       <th>Dia Semana</th>
                       <th>Game id</th>
                       <th>Número Sorteo</th>
+                      <th>Lugar</th>
+                      <th>Premio Bote</th>
+                      <th>Cdc</th>
+                      <th>Apuestas</th>
+                      <th>Recaudacion</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for sorteo in sorteos.items %}
                     <tr>
-                      <td>{{ sorteo.id }}</td>
-                      <td>{{ sorteo.nombre }}</td>
-                      <td>{{ sorteo.id_sorteo }}</td>
-                      <td>{{ sorteo.fecha_sorteo }}</td>
-                      <td>{{ sorteo.dia_semana }}</td>
+                      <td><a href="{{ url_for('sorteos.sorteo', sorteo_id=sorteo.id) }}">{{ sorteo.id_sorteo }}</a></td>
+                      <td>{{ sorteo.nombre|d('', true) }}</td>
+                      <td>{{ sorteo.fecha_sorteo|d('', true) }}</td>
+                      <td>{{ sorteo.dia_semana|d('', true) }}</td>
                       <td>{{ sorteo.game_id }}</td>
-                      <td>{{ sorteo.numero_sorteo }}</td>             
+                      <td>{{ sorteo.numero_sorteo }}</td>
+                      <td>{{ sorteo.lugar|d('', true) }}</td>       
+                      <td>{{ sorteo.premio_bote|d('', true) }}</td> 
+                      <td>{{ sorteo.cdc|d('', true) }}</td>
+                      <td>{{ sorteo.apuestas|d('', true) }}</td>
+                      <td>{{ sorteo.recaudacion|d('', true) }}</td>
                       <td>
-                        <!-- Split button -->
                         <div class="btn-group">
                           <button type="button" class="btn btn-info">Action</button>
                           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">

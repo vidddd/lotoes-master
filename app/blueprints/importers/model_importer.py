@@ -39,8 +39,11 @@ class Importer(db.Model):
 
     @staticmethod
     def get_all_activos():
-        return Importer.query.filter_by(activo=True)
+        return Importer.query.filter_by(activo=True).all()
 
+    @staticmethod
+    def get_tipo_sorteo(tipo_sorteo):
+        return Importer.query.filter(Importer.tipo_sorteo==tipo_sorteo).all()
 
     def delete(self):
         db.session.delete(self)
