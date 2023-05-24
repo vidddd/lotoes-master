@@ -63,7 +63,7 @@ class Sorteo(db.Model):
         
     @staticmethod
     def all_paginated(page=1, per_page=20):
-        return Sorteo.query.order_by(Sorteo.id.desc()).\
+        return Sorteo.query.order_by(Sorteo.fecha_sorteo.desc()).\
             paginate(page=page, per_page=per_page, error_out=False)
 
 class LoteriaNacionalCombinacion(db.Model):

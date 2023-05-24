@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pipenv shell
-flask importers import 
+cd /home/vid/WWW/lotoes-master
+pipenv run flask importers import >> /home/vid/WWW/lotoes-master/cron.txt
 
-#echo "my cronjob is working!" >> /home/vid/WWW/lotoes-master/cron.txt
+#ls -l >> /home/vid/WWW/lotoes-master/cron.txt
