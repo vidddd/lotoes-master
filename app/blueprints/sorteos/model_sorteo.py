@@ -2,6 +2,8 @@
 from app import db
 from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.exc import IntegrityError
+from datetime import datetime
+
 
 class Sorteo(db.Model):
     __tablename__ = 'sorteos'
@@ -9,6 +11,7 @@ class Sorteo(db.Model):
     nombre = db.Column(db.String(100))
     fecha_sorteo = db.Column(db.String(20))
     dia_semana = db.Column(db.String(10))
+    tipo_sorteo = db.Column(db.String(20))
     id_sorteo = db.Column(db.Integer, unique=True)
     game_id = db.Column(db.String(5))
     anyo = db.Column(db.Integer)
@@ -22,6 +25,7 @@ class Sorteo(db.Model):
     premios = db.Column(db.Integer)
     fondo_bote = db.Column(db.Integer)
     escrutinio = db.Column(JSON)
+    
         
     def __repr__(self):
         return f'<Sorteo {self.nombre}>'
@@ -44,6 +48,10 @@ class Sorteo(db.Model):
     @staticmethod
     def get_by_id(id):
         return Sorteo.query.get(id)
+
+    @staticmethod
+    def get_tipo_sorteo(tipo_sorteo):
+        return Sorteo.query.filter(Sorteo.game_id==tipo_sorteo).all()
     
     @staticmethod
     def exists(id_sorteo):

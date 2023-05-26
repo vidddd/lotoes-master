@@ -23,3 +23,16 @@ tipos_sorteo = [
     ("lototurf", "Lototurf"),
     ("quintuple-plus", "Quintuple Plus")
 ]
+
+tipos_sorteo_game_id = [
+    ("", "-- Seleccione --"),
+    ("LNAC", "Loteria Nacional"),
+    ("BONO", "Bonoloto"),
+    ("EMIL", "Euromillones"),
+    ("LAPR", "Primitiva"),
+    ("ELGR", "Gordo Primitiva"),
+    ("LAQU", "Quiniela"),
+    ("QGOL", "Quinigol"),
+    ("LOTU", "Lototurf"),
+    ("QUPL", "Quintuple Plus")
+]

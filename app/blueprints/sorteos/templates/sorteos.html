@@ -19,7 +19,7 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                   {% for key, value in tipos_sorteo %}
-                    <li><a href="{{ key }}">{{ value }}</a></li>
+                    <li><a href="{{ url_for('sorteos.sorteo_tipo_sorteo', tipo_sorteo=key ) }}">{{ value }}</a></li>
                   {% endfor %}
                 </ul>
               </div>
@@ -36,14 +36,13 @@
                       <th>Número Sorteo</th>
                       <th>Lugar</th>
                       <th>Premio Bote</th>
-                      <th>Cdc</th>
                       <th>Apuestas</th>
                       <th>Recaudacion</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {% for sorteo in sorteos.items %}
+                    {% for sorteo in sorteos %}
                     <tr>
                       <td><a href="{{ url_for('sorteos.sorteo', sorteo_id=sorteo.id) }}">{{ sorteo.id_sorteo }}</a></td>
                       <td>{{ sorteo.nombre|d('', true) }}</td>
@@ -53,7 +52,6 @@
                       <td>{{ sorteo.numero_sorteo|d('', true) }}</td>
                       <td>{{ sorteo.lugar|d('', true) }}</td>       
                       <td>{{ sorteo.premio_bote|d('', true) }}</td> 
-                      <td>{{ sorteo.cdc|d('', true) }}</td>
                       <td>{{ sorteo.apuestas|d('', true) }}</td>
                       <td>{{ sorteo.recaudacion|d('', true) }}</td>
                       <td>

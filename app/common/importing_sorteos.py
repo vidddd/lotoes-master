@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from app.blueprints.importers.model_importer import Importer
 from app.blueprints.sorteos.model_sorteo import Sorteo, LoteriaNacionalCombinacion
 from datetime import timedelta, datetime
@@ -32,8 +33,6 @@ class ImportingSorteos():
             if type(result) is list:
                 for sorteo in result:
                     sorteo_id = Sorteo.exists(sorteo.get('id_sorteo'))
-                    print(sorteo.get('combinacion'))
-                    print(sorteo_id)
                     if(sorteo_id): #ya existe
                         print('existe')
                         id_sorteo=sorteo.get('id_sorteo')
@@ -108,6 +107,12 @@ class ImportingSorteos():
                                 try:
                                     db.session.commit()
                                     print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
+                                    send_email(subject='Lotoes Master - Update Sorteo',
+                                        sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],
+                                        text_body=f'Hola estas es dashboard',
+                                        html_body=f'Hola estas es dashboard')
+                                    print('Error - update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
+                                    print(str(e.__dict__['orig'])) 
                                 except exc.SQLAlchemyError as e:
                                     send_email(subject='Error - Lotoes Master',
                                         sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],

@@ -13,7 +13,11 @@ class Importer(db.Model):
     parametro_fecha = db.Column(db.Boolean)
     activo = db.Column(db.Boolean)    
     dias = db.Column(db.Integer)
-        
+    creado = db.Column(db.DateTime, default=db.func.now())
+    modificado = db.Column(nullable=False, default=db.func.now(), onupdate=db.func.now())
+    
+    __mapper_args__ = {"eager_defaults": True}
+
     def __repr__(self):
         return f'<Importer {self.nombre}>'
 
