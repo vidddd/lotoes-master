@@ -14,7 +14,7 @@ class Importer(db.Model):
     activo = db.Column(db.Boolean)    
     dias = db.Column(db.Integer)
     creado = db.Column(db.DateTime, default=db.func.now())
-    modificado = db.Column(nullable=False, default=db.func.now(), onupdate=db.func.now())
+    modificado = db.Column(nullable=True, default=db.func.now(), onupdate=db.func.now())
     
     __mapper_args__ = {"eager_defaults": True}
 

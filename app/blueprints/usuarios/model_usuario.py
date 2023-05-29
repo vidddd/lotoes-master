@@ -9,7 +9,7 @@ class Usuario(db.Model):
     __tablename__ = 'usuarios'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
-    password = db.Column(db.String(80))
+    password = db.Column(db.String(128))
     email = db.Column(db.String(100))
     is_admin = db.Column(db.Boolean)
     created = db.Column(db.DateTime)
@@ -19,6 +19,10 @@ class Usuario(db.Model):
     def __repr__(self):
         return '<Usuario %r>' % self.username
     
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+
     def __init__(self, id, nombre, password, email, is_admin=False):
         self.id = id
         self.name = name
@@ -40,6 +44,13 @@ class Usuario(db.Model):
             except IntegrityError:
                 print(IntegrityError)
                 count += 1
+    
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
     def delete(self):
         db.session.delete(self)

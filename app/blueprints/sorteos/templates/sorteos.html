@@ -34,7 +34,6 @@
                       <th>Dia Semana</th>
                       <th>Game id</th>
                       <th>Número Sorteo</th>
-                      <th>Lugar</th>
                       <th>Premio Bote</th>
                       <th>Apuestas</th>
                       <th>Recaudacion</th>
@@ -44,14 +43,14 @@
                   </thead>
                   <tbody>
                     {% for sorteo in sorteos %}
+                    {{ sorteo|escape }}
                     <tr>
                       <td><a href="{{ url_for('sorteos.sorteo', sorteo_id=sorteo.id) }}">{{ sorteo.id_sorteo }}</a></td>
                       <td>{{ sorteo.nombre|d('', true) }}</td>
-                      <td>{{ sorteo.fecha_sorteo|d('', true) }}</td>
+                      <td>{{ sorteo.fecha_sorteo.format('%d-%m-%Y') }}</td>
                       <td>{{ sorteo.dia_semana|d('', true) }}</td>
                       <td>{{ sorteo.game_id }}</td>
-                      <td>{{ sorteo.numero_sorteo|d('', true) }}</td>
-                      <td>{{ sorteo.lugar|d('', true) }}</td>       
+                      <td>{{ sorteo.numero_sorteo|d('', true) }}</td>     
                       <td>{{ sorteo.premio_bote|d('', true) }}</td> 
                       <td>{{ sorteo.apuestas|d('', true) }}</td>
                       <td>{{ sorteo.recaudacion|d('', true) }}</td>
