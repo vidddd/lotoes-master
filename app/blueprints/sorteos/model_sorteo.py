@@ -86,6 +86,14 @@ class LoteriaNacionalCombinacion(db.Model):
     fraccion = db.Column(db.Integer)
     serie = db.Column(db.Integer)
 
+    @staticmethod
+    def exists_by_sorteo_id(sorteo_id):
+        result = LoteriaNacionalCombinacion.query.filter(LoteriaNacionalCombinacion.sorteo_id == sorteo_id)
+        if result:
+            for sorteo in result:
+                return sorteo.id
+        else: return False
+
 class BonolotoCombinacion(db.Model):
     #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
@@ -100,7 +108,6 @@ class BonolotoCombinacion(db.Model):
     complementario = db.Column(db.Integer)
 
 class PrimitivaCombinacion(db.Model):
-    #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
@@ -113,7 +120,6 @@ class PrimitivaCombinacion(db.Model):
     complementario = db.Column(db.Integer)
 
 class EuromillonesCombinacion(db.Model):
-    #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
@@ -125,7 +131,6 @@ class EuromillonesCombinacion(db.Model):
     estrella_2 = db.Column(db.Integer)
 
 class GordoPrimitivaCombinacion(db.Model):
-    #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
@@ -136,7 +141,6 @@ class GordoPrimitivaCombinacion(db.Model):
     clave = db.Column(db.Integer)
 
 class QuinielaPartidos(db.Model):
-    #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     local = db.Column(db.String(60))
@@ -145,7 +149,6 @@ class QuinielaPartidos(db.Model):
     local = db.Column(db.String(8))
 
 class QuinigolPartidos(db.Model):
-    #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     local = db.Column(db.String(60))
@@ -154,7 +157,6 @@ class QuinigolPartidos(db.Model):
     local = db.Column(db.String(8))
 
 class LototurfCombinacion(db.Model):
-    #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
@@ -167,7 +169,6 @@ class LototurfCombinacion(db.Model):
     reintegro = db.Column(db.Integer)
     
 class QuintupleplusCombinacion(db.Model):
-    #__tablename__ = 'consginaciones'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
     bola_1 = db.Column(db.Integer)
