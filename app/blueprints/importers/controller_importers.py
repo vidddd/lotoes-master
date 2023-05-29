@@ -15,7 +15,7 @@ importers = Blueprint(BP_NM, __name__, template_folder='templates')
 def importers_index():
     page = int(request.args.get('page', 1))
     importers = Importer.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
-    return render_template('importers.html', importers=importers.items, tipos_sorteo=tipos_sorteo)
+    return render_template('importers.html', importers=importers, tipos_sorteo=tipos_sorteo)
 
 """ NEW / EDIT """
 @importers.route('/form', methods=['GET', 'POST'], defaults={'importer_id': None})

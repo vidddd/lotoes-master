@@ -10,7 +10,6 @@ sorteos = Blueprint(BP_NM, __name__, template_folder='templates')
 @sorteos.route('/')
 #@login_required
 def sorteos_index():
-    
     page = int(request.args.get('page', 1))
     sorteos = Sorteo.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
     return render_template('sorteos.html', sorteos=sorteos, seccion="sorteos", tipos_sorteo=tipos_sorteo_game_id)
@@ -20,7 +19,6 @@ def sorteos_index():
 def sorteo_tipo_sorteo():
     tipo_sorteo = request.args.get('tipo_sorteo', default = '')
     sorteos = Sorteo.get_tipo_sorteo(tipo_sorteo)
-    print(sorteos)
     return render_template('sorteos.html', sorteos=sorteos, tipos_sorteo=tipos_sorteo_game_id)
 
 

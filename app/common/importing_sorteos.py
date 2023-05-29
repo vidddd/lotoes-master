@@ -72,50 +72,59 @@ class ImportingSorteos():
                                             reintegro = x[6],
                                             complementario = x[7])
                                     db.session.add(bonocomb)
-                                    
                     
-                                '''if(su.game_id == 'LAPR'):
-                                    combinacion = sorteo.get('combinacion')
-                                    #print(combinacion) # 03 - 12 - 19 - 24 - 30 - 02 - 05
+                            if(su.game_id == 'LAPR'):
+                                combinacion = sorteo.get('combinacion')
+                                if combinacion is not None: 
+                                    x = re.findall("[0-9]+", combinacion) 
+                                    primicomb = PrimitivaCombinacion(
+                                            sorteo_id = sorteo_id,
+                                            bola_1 = x[0],
+                                            bola_2 = x[1],
+                                            bola_3 = x[2],
+                                            bola_4 = x[3],
+                                            bola_5 = x[4],
+                                            bola_6 = x[5],
+                                            reintegro = x[6],
+                                            complementario = x[7])
+                                    db.session.add(primicomb)
                                 
-                                if(su.game_id == 'ELGR'):
-                                    combinacion = sorteo.get('combinacion')
-                                    #print(combinacion)
+                            if(su.game_id == 'ELGR'):
+                                combinacion = sorteo.get('combinacion')
+                                print(combinacion)
                                 
-                                if(su.game_id == 'EMIL'):
-                                    combinacion = sorteo.get('combinacion')
-                                    #print(combinacion)
+                            if(su.game_id == 'EMIL'):
+                                combinacion = sorteo.get('combinacion')
+                                print(combinacion)
                                 
-                                if(su.game_id == 'LAQU'):
-                                    combinacion = sorteo.get('combinacion')
-                                    #print(combinacion)
+                            if(su.game_id == 'LAQU'):
+                                combinacion = sorteo.get('combinacion')
+                                print(combinacion)
                                         
-                                if(su.game_id == 'QGOL'):
-                                    combinacion = sorteo.get('combinacion')
-                                    #print(combinacion)
+                            if(su.game_id == 'QGOL'):
+                                combinacion = sorteo.get('combinacion')
+                                print(combinacion)
                                     
-                                if(su.game_id == 'LOTU'):
-                                    combinacion = sorteo.get('combinacion')
-                                    #print(combinacion)
+                            if(su.game_id == 'LOTU'):
+                                combinacion = sorteo.get('combinacion')
+                                print(combinacion)
                                     
-                                if(su.game_id == 'QUPL'):
-                                    combinacion = sorteo.get('combinacion')
-                                    #print('QUPL')
-                                    
-                                db.session.add(su)
-                                '''
-                                try:
-                                    db.session.commit()
-                                    print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
-                                    #send_email(subject='Lotoes Master - Update Sorteo', sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],
-                                    #    text_body=f'update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
+                            if(su.game_id == 'QUPL'):
+                                combinacion = sorteo.get('combinacion')
+                                print('QUPL')
+                                                       
+                        try:
+                            db.session.commit()
+                            print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
+                            #send_email(subject='Lotoes Master - Update Sorteo', sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],
+                            #    text_body=f'update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
 
-                                except exc.SQLAlchemyError as e:
-                                    send_email(subject='Error - Lotoes Master',
-                                        sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],
-                                        text_body=f'Hola estas es dashboard')
-                                    print('Error - update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
-                                    print(str(e.__dict__['orig'])) 
+                        except exc.SQLAlchemyError as e:
+                            send_email(subject='Error - Lotoes Master',
+                                            sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],
+                                            text_body=f'Error - update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
+                            print('Error - update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
+                            print(str(e.__dict__['orig'])) 
 
                     else:  #nuevo sorteo
                         s = Sorteo(
@@ -147,8 +156,8 @@ class ImportingSorteos():
                         except exc.SQLAlchemyError as e:
                             send_email(subject='Error - Lotoes Master',
                                 sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],
-                                text_body=f'Hola estas es dashboard',
-                                html_body=f'Hola estas es dashboard')
+                                text_body=f'Error - add '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'),
+                                html_body=f'Error - add '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'),)
                             print('Error - add '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                             print(str(e.__dict__['orig']))
 

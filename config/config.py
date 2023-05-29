@@ -10,7 +10,7 @@ class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', default='')
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    ITEMS_PER_PAGE = 25
+    ITEMS_PER_PAGE = 15
     #DOMAINS = ['localhost', '']
     MAIL_SERVER = os.getenv('MAIL_SERVER', default='')
     MAIL_PORT = os.getenv('MAIL_PORT', default='')

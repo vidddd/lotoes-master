@@ -76,19 +76,24 @@
                 </table>
               </div>
               <ul class="pagination pull-right">
-                <li class="disabled"><a href="#">&laquo;</a></li>
+                {% if sorteos.has_prev %}
+                    <li><a href="{{ url_for('sorteos.sorteos_index', page=sorteos.prev_num) }}">&laquo;</a></li>
+                {% endif %}
                 {%- for page in sorteos.iter_pages() %}
                   {% if page %}
-                      {% if page != sorteos.page %}
-                              <li><a href="{{ url_for('sorteos.sorteos_index', page=page) }}">{{ page }} <span class="sr-only">(current)</span></a></li>
-                      {% else %}
-                              <li class="active"><a href="#">{{ page }} <span class="sr-only">(current)</span></a></li>
-                      {% endif %}
-                  {% else %}
-                              <li><a href="#">&raquo;</a></li>
+                    {% if page != sorteos.page %}
+                                <li><a href="{{ url_for('sorteos.sorteos_index', page=page) }}">{{ page }} <span class="sr-only">(current)</span></a></li>
+                        {% else %}
+                                <li class="active"><a href="#">{{ page }} <span class="sr-only">(current)</span></a></li>
+                        {% endif %}
+                    {% else %}
+                    {{ page.next_num }}
                   {% endif %}
                 {%- endfor %}
-               
+                {% if sorteos.has_next %}
+                  <li><a href="{{ url_for('sorteos.sorteos_index', page=sorteos.next_num) }}">&raquo;</a></li>
+                {% endif %}
+ 
               </ul>  
             </div>
           </div>

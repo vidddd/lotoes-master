@@ -73,13 +73,25 @@
                 </table>
               </div>
               <ul class="pagination pull-right">
-                <li class="disabled"><a href="#">&laquo;</a></li>
-                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">4 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">5 <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">&raquo;</a></li>
+                {% if importers.has_prev %}
+                    <li><a href="{{ url_for('importers.importers_index', page=importers.prev_num) }}">&laquo;</a></li>
+                {% endif %}
+
+                {%- for page in importers.iter_pages() %}
+                  {% if page %}
+                    {% if page != importers.page %}
+                                <li><a href="{{ url_for('importers.importers_index', page=page) }}">{{ page }} <span class="sr-only">(current)</span></a></li>
+                        {% else %}
+                                <li class="active"><a href="#">{{ page }} <span class="sr-only">(current)</span></a></li>
+                        {% endif %}
+                    {% else %}
+                    {{ page.next_num }}
+                  {% endif %}
+                {%- endfor %}
+                
+                {% if importers.has_next %}
+                  <li><a href="{{ url_for('importers.importers_index', page=importers.next_num) }}">&raquo;</a></li>
+                {% endif %}
               </ul>  
             </div>
           </div>
