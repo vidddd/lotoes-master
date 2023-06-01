@@ -15,4 +15,4 @@ def usuarios_index():
     #usuarios = Sorteo.all_paginated(page, current_app.con ig['ITEMS_PER_PAGE'])
 
     #return render_template('usuarios.html', usuarios=usuarios, seccion="usuarios")
-    return render_template('usuarios.html')
+    return render_template('usuarios.html', seccion="usuarios")

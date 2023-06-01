@@ -15,7 +15,7 @@ importers = Blueprint(BP_NM, __name__, template_folder='templates')
 def importers_index():
     page = int(request.args.get('page', 1))
     importers = Importer.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
-    return render_template('importers.html', importers=importers, tipos_sorteo=tipos_sorteo)
+    return render_template('importers.html', seccion="importers", importers=importers, tipos_sorteo=tipos_sorteo)
 
 """ NEW / EDIT """
 @importers.route('/form', methods=['GET', 'POST'], defaults={'importer_id': None})
@@ -50,7 +50,7 @@ def importer_tipo_sorteo():
     tipo_sorteo = request.args.get('tipo_sorteo', default = '')
     importers = Importer.get_tipo_sorteo(tipo_sorteo)
     print(importers)
-    return render_template('importers.html', importers=importers, tipos_sorteo=tipos_sorteo)
+    return render_template('importers.html',seccion="importers", importers=importers, tipos_sorteo=tipos_sorteo)
 
 """ DELETE """
 @importers.route('/delete/<int:importer_id>', methods=['GET', 'POST'])

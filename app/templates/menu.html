@@ -1,10 +1,10 @@
        <ul class="templatemo-sidebar-menu">
-          <li class="active"><a href="/"><i class="fa fa-home"></i>Dashboard</a></li>
-          <li><a href="/sorteos"><i class="fa fa-globe"></i>Sorteos</a></li>
-          <li><a href="/usuarios"><i class="fa fa-user"></i>Usuarios</a></li>
-          <li><a href="/clientes"><i class="fa fa-users"></i>Clientes</a></li>
-          <li><a href="/administraciones"><i class="fa fa-cake"></i>Administraciones</a></li>
-          <li><a href="/importers"><i class="fa fa-bars"></i>Importers</a></li>
+          <li class="{% if seccion == 'dashboard' %}active{% endif %}"><a href="/"><i class="fa fa-home"></i>Dashboard</a></li>
+          <li class="{% if seccion == 'sorteos' %}active{% endif %}"><a href="/sorteos"><i class="fa fa-globe"></i>Sorteos</a></li>
+          <li class="{% if seccion == 'usuarios' %}active{% endif %}"><a href="/usuarios"><i class="fa fa-user"></i>Usuarios</a></li>
+          <li class="{% if seccion == 'clientes' %}active{% endif %}"><a href="/clientes"><i class="fa fa-users"></i>Clientes</a></li>
+          <li class="{% if seccion == 'administraciones' %}active{% endif %}"><a href="/administraciones"><i class="fa fa-building-o"></i>Administraciones</a></li>
+          <li class="{% if seccion == 'importers' %}active{% endif %}"><a href="/importers"><i class="fa fa-bars"></i>Importers</a></li>
          <!--
           <li class="sub open">
             <a href="javascript:;">

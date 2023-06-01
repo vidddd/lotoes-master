@@ -21,7 +21,7 @@ def upgrade():
     with op.batch_alter_table('importers', schema=None) as batch_op:
         batch_op.alter_column('modificado',
                existing_type=postgresql.TIMESTAMP(),
-               nullable=False)
+               nullable=True)
 
     # ### end Alembic commands ###
 

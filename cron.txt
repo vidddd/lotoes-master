@@ -20,3 +20,35 @@ update 1202601154 sábado BONO
 ['08 - 10 - 30 - 38 - 41 - 47 C(46) R(0)']
 update 1202001148 domingo BONO
 Done Importing
+Importing Sorteos
+update 1202104064 lunes LAPR
+add 1202804067 lunes LAPR
+update 1202201150 martes BONO
+update 1202301151 miércoles BONO
+update 1202401152 jueves BONO
+add 1202701155 domingo BONO
+update 1202101149 lunes BONO
+update 1201909042 sábado LNAC
+Done Importing
+Importing Sorteos
+update 1202104064 lunes LAPR
+update 1202301151 miércoles BONO
+update 1202401152 jueves BONO
+add 1202501153 viernes BONO
+add 1202801156 lunes BONO
+update 1202201150 martes BONO
+update 1201909042 sábado LNAC
+add 1202604066 sábado LAPR
+Done Importing
+Importing Sorteos
+update 1202104064 lunes LAPR
+update 1202401152 jueves BONO
+update 1202501153 viernes BONO
+update 1202601154 sábado BONO
+add 1202901157 martes BONO
+update 1202301151 miércoles BONO
+update 1201909042 sábado LNAC
+add 1203109045 jueves LNAC
+add 1203809047 jueves LNAC
+update 1202404065 jueves LAPR
+Done Importing
