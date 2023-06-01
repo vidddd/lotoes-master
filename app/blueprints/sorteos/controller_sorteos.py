@@ -1,7 +1,9 @@
-from flask import Blueprint,render_template, request, current_app, url_for
+from flask import Blueprint,render_template, request, current_app, url_for, Response
 #from flask_login import login_required
 from .model_sorteo import Sorteo
 from config.lotoes_config import tipos_sorteo_game_id
+from pprint import pprint
+from inspect import getmembers
 
 BP_NM = 'sorteos'
 
@@ -26,6 +28,12 @@ def sorteo_tipo_sorteo():
 #@login_required
 def sorteo(sorteo_id):
     sorteo = Sorteo.get_by_id(sorteo_id)
+    #pprint(getmembers(sorteo))
     if sorteo is None:
         raise NotFound(sorteo_id)
-    return render_template('sorteo.html', sorteo=sorteo, seccion='sorteos')
+    return render_template('sorteo.html', debug=True, sorteo=sorteo, seccion='sorteos')
+
+def dpm(variable):
+    pp = pprint.PrettyPrinter(indent=4, depth=6)
+    debug_message = pp.pprint(variable)
+    return Response(debug_message, mimetype="text/text")

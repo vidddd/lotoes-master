@@ -11,24 +11,33 @@
             <div class="col-md-12">
                 <div class="col-md-6 col-sm-6 margin-bottom-30">
                     <div class="panel panel-primary">
-                      <div class="panel-heading">{{ sorteo.nombre }}</div>
+                      <div class="panel-heading">Sorteo Detalle</div>
                       <div class="panel-body">
                         <div class="list-group">
-                          <a href="#" class="list-group-item">Id Sorteo: {{ sorteo.id_sorteo }}</a>
-                          <a href="#" class="list-group-item">Dia Semana: {{ sorteo.dia_semana }}</a>
-                          <a href="#" class="list-group-item">Nombre: {{ sorteo.nombre }}</a>
-                          <a href="#" class="list-group-item">Game Id: {{ sorteo.game_id }}</a>
-                          <a href="#" class="list-group-item">Año: {{ sorteo.anyo }}</a>
-                          <a href="#" class="list-group-item">Número Sorteo: {{ sorteo.numero_sorteo }}</a>
-                          <a href="#" class="list-group-item">{{ sorteo.lugar }}</a>
-                          <a href="#" class="list-group-item">{{ sorteo.premio_bote }}</a>
-                          <a href="#" class="list-group-item">{{ sorteo.cdc }}</a>
-                          <a href="#" class="list-group-item">{{ sorteo.apuestas }}</a>
-                          <a href="#" class="list-group-item">{{ sorteo.recaudacion }}</a>
-                          <a href="#" class="list-group-item">{{ sorteo.combinacion_json }}</a>
-                          <a href="#" class="list-group-item">{{ sorteo.premios }}</a>
-                          <a href="#" class="list-group-item">{{ sorteo.fondo_bote }}</a>
-                          <a href="#" class="list-group-item">{{ sorteo.escrutinio }}</a>
+                          <a href="#" class="list-group-item"><strong>Id Sorteo:</strong> {{ sorteo.id_sorteo }}</a>
+                          <a href="#" class="list-group-item"><strong>Dia Semana: </strong>{{ sorteo.dia_semana }}</a>
+                          <a href="#" class="list-group-item"><strong>Nombre: </strong>{{ sorteo.nombre }}</a>
+                          <a href="#" class="list-group-item"><strong>Game Id: </strong> {{ sorteo.game_id }}</a>
+                          <a href="#" class="list-group-item"><strong>Año: </strong>{{ sorteo.anyo }}</a>
+                          <a href="#" class="list-group-item"><strong>Número Sorteo:</strong>{{ sorteo.numero_sorteo }}</a>
+                          <a href="#" class="list-group-item"><strong>Lugar: </strong>{{ sorteo.lugar }}</a>
+                          <a href="#" class="list-group-item"><strong>Premio Bote: </strong>{{ sorteo.premio_bote }}</a>
+                          <a href="#" class="list-group-item"><strong>Cdc: </strong>{{ sorteo.cdc }}</a>
+                          <a href="#" class="list-group-item"><strong>Apuestas: </strong>{{ sorteo.apuestas }}</a>
+                          <a href="#" class="list-group-item"><strong>Recaudacion: </strong>{{ sorteo.recaudacion }}</a>
+                          <a href="#" class="list-group-item"><strong>Combinacion json: </strong>{{ sorteo.combinacion_json }}</a>
+                          <a href="#" class="list-group-item"><strong>Premios: </strong>{{ sorteo.premios }}</a>
+                          <a href="#" class="list-group-item"><strong>Fondo Bote: </strong>{{ sorteo.fondo_bote }}</a>
+                          <a href="#" class="list-group-item"><strong>Escrutinio: </strong>{{ sorteo.escrutinio }}</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">Sorteo Combinacion</div>
+                      <div class="panel-body">
+                        <div class="list-group">
+                          <a href="#" class="list-group-item"><strong>Loteria Nacional</strong> {{ sorteo.loteria_nacional_combinacion }}</a>
+                          <a href="#" class="list-group-item"><strong>Bonoloto </strong> {{ sorteo.bonoloto_combinacion }}</a>
                         </div>
                       </div>
                     </div>

@@ -28,7 +28,7 @@ class Sorteo(db.Model):
     
         
     def __repr__(self):
-        return f'<Sorteo {self.nombre}>'
+        return f'<Sorteo {self.id_sorteo}>'
 
     def save(self):
         if not self.id:
@@ -78,6 +78,7 @@ class LoteriaNacionalCombinacion(db.Model):
     #__tablename__ = 'loteria_nacional_combinacion'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False, unique=True)
+    sorteo = db.relationship(Sorteo, backref="loteria_nacional_combinacion")
     primer_premio = db.Column(db.Integer)
     segundo_premio = db.Column(db.Integer)
     tercer_premio = db.Column(db.Integer)
@@ -85,6 +86,9 @@ class LoteriaNacionalCombinacion(db.Model):
     quinto_premio = db.Column(db.Integer)
     fraccion = db.Column(db.Integer)
     serie = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f'<LoteriaNacionalCombinacion {self.id}>'
 
     @staticmethod
     def exists_by_sorteo_id(sorteo_id):
@@ -95,9 +99,10 @@ class LoteriaNacionalCombinacion(db.Model):
         else: return False
 
 class BonolotoCombinacion(db.Model):
-    #__tablename__ = 'consginaciones'
+    #__tablename__ = 'bonoloto_combinacion'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
+    sorteo = db.relationship(Sorteo, backref="bonoloto_combinacion")
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -106,10 +111,15 @@ class BonolotoCombinacion(db.Model):
     bola_6 = db.Column(db.Integer)
     reintegro = db.Column(db.Integer)
     complementario = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f'<BonolotoCombinacion {self.id}>'
 
 class PrimitivaCombinacion(db.Model):
+    #__tablename__ = 'primitiva_combinacion'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
+    sorteo = db.relationship(Sorteo, backref="primitiva_combinacion")
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -119,9 +129,14 @@ class PrimitivaCombinacion(db.Model):
     reintegro = db.Column(db.Integer)
     complementario = db.Column(db.Integer)
 
+    def __repr__(self):
+        return f'<PrimitivaCombinacion {self.id}>'
+
 class EuromillonesCombinacion(db.Model):
+    #__tablename__ = 'euromillones_combinacion'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
+    sorteo = db.relationship(Sorteo, backref="euromillones_combinacion")
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -130,9 +145,14 @@ class EuromillonesCombinacion(db.Model):
     estrella_1 = db.Column(db.Integer)
     estrella_2 = db.Column(db.Integer)
 
+    def __repr__(self):
+        return f'<EuromillonesCombinacion {self.id}>'
+
 class GordoPrimitivaCombinacion(db.Model):
+    #__tablename__ = 'gordo_primitiva_combinacion'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
+    sorteo = db.relationship(Sorteo, backref="gordo_primitiva_combinacion")
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -140,25 +160,40 @@ class GordoPrimitivaCombinacion(db.Model):
     bola_5 = db.Column(db.Integer)
     clave = db.Column(db.Integer)
 
+    def __repr__(self):
+        return f'<GordoPrimitivaCombinacion {self.id}>'
+
 class QuinielaPartidos(db.Model):
+    #__tablename__ = 'quiniela_partidos'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
+    sorteo = db.relationship(Sorteo, backref="quiniela_partidos")
     local = db.Column(db.String(60))
     visitante = db.Column(db.String(60))
     signo = db.Column(db.String(8))
     local = db.Column(db.String(8))
+
+    def __repr__(self):
+        return f'<QuinielaPartidos {self.id}>'
 
 class QuinigolPartidos(db.Model):
+    #__tablename__ = 'quinigol_partidos'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
+    sorteo = db.relationship(Sorteo, backref="quinigol_partidos")
     local = db.Column(db.String(60))
     visitante = db.Column(db.String(60))
     signo = db.Column(db.String(8))
     local = db.Column(db.String(8))
 
+    def __repr__(self):
+        return f'<QuinigolPartidos {self.id}>'
+
 class LototurfCombinacion(db.Model):
+    #__tablename__ = 'lototurf_combinacion'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
+    sorteo = db.relationship(Sorteo, backref="lototurf_combinacion")
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
@@ -167,13 +202,21 @@ class LototurfCombinacion(db.Model):
     bola_6 = db.Column(db.Integer)
     caballo = db.Column(db.Integer)
     reintegro = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f'<LototurfCombinacion {self.id}>'
     
 class QuintupleplusCombinacion(db.Model):
+    #__tablename__ = 'quintuple_plus_combinacion'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
+    sorteo = db.relationship(Sorteo, backref="quintuple_plus_combinacion")
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)
     bola_4 = db.Column(db.Integer)
     bola_5 = db.Column(db.Integer)
     bola_6 = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f'<QuintupleplusCombinacion {self.id}>'

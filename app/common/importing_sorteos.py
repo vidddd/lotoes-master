@@ -107,7 +107,18 @@ class ImportingSorteos():
                                 
                             if(su.game_id == 'EMIL'):
                                 combinacion = sorteo.get('combinacion')
-                                print(combinacion)
+                                if combinacion is not None: 
+                                    x = re.findall("[0-9]+", combinacion) 
+                                    eurcomb = EuromillonesCombinacion(
+                                            sorteo_id = sorteo_id,
+                                            bola_1 = x[0],
+                                            bola_2 = x[1],
+                                            bola_3 = x[2],
+                                            bola_4 = x[3],
+                                            bola_5 = x[4],
+                                            estrella_1 = x[5],
+                                            estrella_2 = x[6])
+                                    db.session.add(gordocomb)
                                 
                             if(su.game_id == 'LAQU'):
                                 combinacion = sorteo.get('combinacion')
