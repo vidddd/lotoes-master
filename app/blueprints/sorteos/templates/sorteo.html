@@ -15,6 +15,7 @@
                       <div class="panel-body">
                         <div class="list-group">
                           <a href="#" class="list-group-item"><strong>Id Sorteo:</strong> {{ sorteo.id_sorteo }}</a>
+                          <a href="#" class="list-group-item"><strong>Fecha Sorteo:</strong> {{ sorteo.fecha_sorteo }}</a>                          
                           <a href="#" class="list-group-item"><strong>Dia Semana: </strong>{{ sorteo.dia_semana }}</a>
                           <a href="#" class="list-group-item"><strong>Nombre: </strong>{{ sorteo.nombre }}</a>
                           <a href="#" class="list-group-item"><strong>Game Id: </strong> {{ sorteo.game_id }}</a>
@@ -32,38 +33,108 @@
                         </div>
                       </div>
                     </div>
-                    <div class="panel panel-primary">
-                      <div class="panel-heading">Sorteo Combinacion</div>
-                      <div class="panel-body">
-                        <div class="list-group">
-                          <a href="#" class="list-group-item"><strong>Loteria Nacional </strong> {{ sorteo.loteria_nacional_combinacion }}</a>
-                          <a href="#" class="list-group-item"><strong>Bonoloto </strong> {{ sorteo.bonoloto_combinacion }}</a>
-                          <a href="#" class="list-group-item"><strong>Primitiva </strong> {{ sorteo.primitiva_combinacion.id }}</a>
+                    {% if sorteo.loteria_nacional_combinacion %}
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Loteria Nacional Combinacion</div> 
+                          <div class="list-group">
+                            {% for combinacion in sorteo.loteria_nacional_combinacion %}
+                              <a href="#" class="list-group-item"><strong>Primer Premio</strong> {{ combinacion.primer_premio }}</a>
+                              <a href="#" class="list-group-item"><strong>Segundo Premio </strong> {{ combinacion.segundo_premio }}</a>
+                              <a href="#" class="list-group-item"><strong>Tercer Premio </strong> {{ combinacion.tercer_premio }}</a>
+                              <a href="#" class="list-group-item"><strong>Cuarto Premio </strong> {{ combinacion.cuarto_premio }}</a>
+                              <a href="#" class="list-group-item"><strong>Quinto Premio </strong> {{ combinacion.quinto_premio }}</a>
+                              <a href="#" class="list-group-item"><strong>Fraccion </strong> {{ combinacion.fraccion }}</a>
+                              <a href="#" class="list-group-item"><strong>Serie </strong> {{ combinacion.serie }}</a>
+                            {% endfor %}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-primary">
-                      <div class="panel-heading">Bonoloto Combinacion</div>
-                      <div class="panel-body">
-                        <div class="list-group">
-                          {% for combinacion in sorteo.bonoloto_conbinacion %}
-                            {{ combinacion.bola_1 }}
-                            <a href="#" class="list-group-item"><strong>Bonoloto </strong> {{ sorteo.bonoloto_combinacion }}</a>
-                          {% endfor %}
+                    {% endif %}
+                    {% if sorteo.bonoloto_combinacion %}
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Bonoloto Combinacion</div>
+                        <div class="panel-body">
+                          <div class="list-group">
+                            {% for combinacion in sorteo.bonoloto_combinacion %}
+                            <a href="#" class="list-group-item"><strong>Bola 1 </strong> {{ combinacion.bola_1 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 2 </strong> {{ combinacion.bola_2 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 3 </strong> {{ combinacion.bola_3 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 4 </strong> {{ combinacion.bola_4 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 5 </strong> {{ combinacion.bola_5 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 6 </strong> {{ combinacion.bola_6 }}</a>
+                            <a href="#" class="list-group-item"><strong>Complementario </strong> {{ combinacion.complementario }}</a>
+                            <a href="#" class="list-group-item"><strong>Reintegro </strong> {{ combinacion.reintegro }}</a>
+                            {% endfor %}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="panel panel-primary">
-                      <div class="panel-heading">Primitiva Combinacion</div>
-                      <div class="panel-body">
-                        <div class="list-group">
-                          {% for combinacion in sorteo.primitiva_conbinacion %}
-                            {{ combinacion }}
-                            <a href="#" class="list-group-item"><strong>Primitiva </strong> {{ sorteo.primitiva_combinacion }}</a>
-                          {% endfor %}
+                    {% endif %}
+                    {% if sorteo.primitiva_combinacion %}
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Primitiva Combinacion</div>
+                        <div class="panel-body">
+                          <div class="list-group">
+                            {% for combinacion in sorteo.primitiva_combinacion %}
+                            <a href="#" class="list-group-item"><strong>Bola 1 </strong> {{ combinacion.bola_1 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 2 </strong> {{ combinacion.bola_2 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 3 </strong> {{ combinacion.bola_3 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 4 </strong> {{ combinacion.bola_4 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 5 </strong> {{ combinacion.bola_5 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 6 </strong> {{ combinacion.bola_6 }}</a>
+                            <a href="#" class="list-group-item"><strong>Complementario </strong> {{ combinacion.complementario }}</a>
+                            <a href="#" class="list-group-item"><strong>Reintegro </strong> {{ combinacion.reintegro }}</a>
+                            {% endfor %}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    {% endif %}
+                    {% if sorteo.gordo_primitiva_combinacion %}
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Gordo Primitiva Combinacion</div>
+                        <div class="panel-body">
+                          <div class="list-group">
+                            {% for combinacion in sorteo.gordo_primitiva_combinacion %}
+                            <a href="#" class="list-group-item"><strong>Bola 1 </strong> {{ combinacion.bola_1 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 2 </strong> {{ combinacion.bola_2 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 3 </strong> {{ combinacion.bola_3 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 4 </strong> {{ combinacion.bola_4 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 5 </strong> {{ combinacion.bola_5 }}</a>
+                            <a href="#" class="list-group-item"><strong>Clave </strong> {{ combinacion.clave }}</a>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if sorteo.euromillones_combinacion %}
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Euromillones Combinacion</div>
+                        <div class="panel-body">
+                          <div class="list-group">
+                            {% for combinacion in sorteo.euromillones_combinacion %}
+                              <a href="#" class="list-group-item"><strong>Bola 1 </strong> {{ combinacion.bola_1 }}</a>
+                              <a href="#" class="list-group-item"><strong>Bola 2 </strong> {{ combinacion.bola_2 }}</a>
+                              <a href="#" class="list-group-item"><strong>Bola 3 </strong> {{ combinacion.bola_3 }}</a>
+                              <a href="#" class="list-group-item"><strong>Bola 4 </strong> {{ combinacion.bola_4 }}</a>
+                              <a href="#" class="list-group-item"><strong>Bola 5 </strong> {{ combinacion.bola_5 }}</a>
+                              <a href="#" class="list-group-item"><strong>Estrella 1</strong> {{ combinacion.estrella_1 }}</a>
+                              <a href="#" class="list-group-item"><strong>Estrella 2 </strong> {{ combinacion.estrella_2 }}</a>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if sorteo.quiniela_partidos %}
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Quiniela Partidos</div>
+                        <div class="panel-body">
+                          <div class="list-group">
+                            {% for combinacion in sorteo.quiniela_partidos %}
+
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
                     <span class="btn btn-primary"><a href="/sorteos">Sorteos</a></span>
                   </div>
             </div>

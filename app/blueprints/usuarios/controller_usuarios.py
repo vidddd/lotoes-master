@@ -9,10 +9,15 @@ usuarios = Blueprint(BP_NM, __name__, template_folder='templates')
 @usuarios.route('/')
 #@login_required
 def usuarios_index():
-    
-    #page = int(request.args.get('page', 1))
-    
-    #usuarios = Sorteo.all_paginated(page, current_app.con ig['ITEMS_PER_PAGE'])
+    page = int(request.args.get('page', 1))
+    usuarios = Usuario.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
+    return render_template('usuarios.html', usuarios=usuarios, seccion="usuarios")
 
-    #return render_template('usuarios.html', usuarios=usuarios, seccion="usuarios")
-    return render_template('usuarios.html', seccion="usuarios")
+
+@sorteos.route('/usuario/<int:usuario_id>')
+#@login_required
+def usuario(usuario_id):
+    usuario = Usuario.get_by_id(usuario_id)
+    if usuario is None:
+        raise NotFound(usuario_id)
+    return render_template('usuario.html', debug=True, usuario=usuario, seccion='usuarios')

@@ -91,7 +91,6 @@ class ImportingSorteos():
                                 
                             if(su.game_id == 'ELGR'):
                                 combinacion = sorteo.get('combinacion')
-                                print(combinacion)
                                 if combinacion is not None: 
                                     x = re.findall("[0-9]+", combinacion) 
                                     gordocomb = GordoPrimitivaCombinacion(
@@ -121,7 +120,13 @@ class ImportingSorteos():
                                 
                             if(su.game_id == 'LAQU'):
                                 combinacion = sorteo.get('combinacion')
-                                print(combinacion)
+                                if combinacion is not None: 
+                                    print(combinacion)
+                                    ''' quipar = QuinielaPartidos(
+                                            sorteo_id = sorteo_id,
+                                           )
+                                           '''
+                                    db.session.add(quipar)
                                         
                             if(su.game_id == 'QGOL'):
                                 combinacion = sorteo.get('combinacion')

@@ -103,7 +103,7 @@ class BonolotoCombinacion(db.Model):
     #__tablename__ = 'bonoloto_combinacion'
     id = db.Column(db.Integer, primary_key=True)
     sorteo_id = db.Column(db.Integer, db.ForeignKey('sorteos.id'),nullable=False)
-    sorteo = db.relationship(Sorteo, backref="bonoloto_combinacion")
+    sorteo = db.relationship(Sorteo, backref="bonoloto_combinacion", uselist=False)
     bola_1 = db.Column(db.Integer)
     bola_2 = db.Column(db.Integer)
     bola_3 = db.Column(db.Integer)

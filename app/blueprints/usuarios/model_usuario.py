@@ -68,6 +68,11 @@ class Usuario(db.Model):
     def get_all():
         return Usuario.query.all()
 
+    @staticmethod
+    def all_paginated(page=1, per_page=20):
+        return Usuario.query.order_by(Usuario.id.desc()).\
+            paginate(page=page, per_page=per_page, error_out=False)
+
 
 class Role(db.Model):
     __tablename__ = 'roles'

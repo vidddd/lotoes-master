@@ -29,12 +29,8 @@ def sorteo_tipo_sorteo():
 #@login_required
 def sorteo(sorteo_id):
     sorteo = Sorteo.get_by_id(sorteo_id)
-    pprint(getmembers(sorteo.primitiva_combinacion))
+    pprint(getmembers(sorteo.bonoloto_combinacion))
     if sorteo is None:
         raise NotFound(sorteo_id)
     return render_template('sorteo.html', debug=True, sorteo=sorteo, seccion='sorteos')
 
-def dpm(variable):
-    pp = pprint.PrettyPrinter(indent=4, depth=6)
-    debug_message = pp.pprint(variable)
-    return Response(debug_message, mimetype="text/text")

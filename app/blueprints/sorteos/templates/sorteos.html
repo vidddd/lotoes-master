@@ -53,7 +53,11 @@
                       <td>{{ sorteo.premio_bote|d('', true) }}</td> 
                       <td>{{ sorteo.apuestas|d('', true) }}</td>
                       <td>{{ sorteo.recaudacion|d('', true) }}</td>
-                      <td>{{ sorteo.bonoloto_combinacion }}</td>
+                      <td>
+                        {% if sorteo.loteria_nacional_combinacion or sorteo.bonoloto_combinacion or sorteo.primitiva_combinacion or sorteo.gordo_primitiva_combinacion or sorteo.euromillones_combinacion or sorteo.quiniela_partidos or sorteo.quinigol_partidos or sorteo.lototurf_combinacion or sorteo.quintuple_plus_combinacion %}
+                          <a href="{{ url_for('sorteos.sorteo', sorteo_id=sorteo.id) }}">Resultados</a>
+                        {% endif %}
+                      </td>
                       <td>
                         <div class="btn-group">
                           <button type="button" class="btn btn-info">Action</button>

@@ -16,7 +16,6 @@ class Importer(db.Model):
     creado = db.Column(db.DateTime, default=db.func.now())
     modificado = db.Column(db.DateTime, nullable=True, default=db.func.now(), onupdate=db.func.now())
     
-    __mapper_args__ = {"eager_defaults": True}
 
     def __repr__(self):
         return f'<Importer {self.nombre}>'
