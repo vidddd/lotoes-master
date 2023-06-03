@@ -20,7 +20,8 @@ def sorteos_index():
 @sorteos.route('/tipo', methods=['GET'])
 def sorteo_tipo_sorteo():
     tipo_sorteo = request.args.get('tipo_sorteo', default = '')
-    sorteos = Sorteo.get_tipo_sorteo(tipo_sorteo)
+    page = int(request.args.get('page', 1))
+    sorteos = Sorteo.get_tipo_sorteo(tipo_sorteo, page, current_app.config['ITEMS_PER_PAGE'])
     return render_template('sorteos.html', sorteos=sorteos, tipos_sorteo=tipos_sorteo_game_id)
 
 
@@ -28,7 +29,7 @@ def sorteo_tipo_sorteo():
 #@login_required
 def sorteo(sorteo_id):
     sorteo = Sorteo.get_by_id(sorteo_id)
-    #pprint(getmembers(sorteo))
+    pprint(getmembers(sorteo.primitiva_combinacion))
     if sorteo is None:
         raise NotFound(sorteo_id)
     return render_template('sorteo.html', debug=True, sorteo=sorteo, seccion='sorteos')

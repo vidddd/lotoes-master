@@ -48,8 +48,8 @@ def importer_active_deactive(importer_id):
 @importers.route('/tipo', methods=['GET'])
 def importer_tipo_sorteo():
     tipo_sorteo = request.args.get('tipo_sorteo', default = '')
-    importers = Importer.get_tipo_sorteo(tipo_sorteo)
-    print(importers)
+    page = int(request.args.get('page', 1))
+    importers = Importer.get_tipo_sorteo(tipo_sorteo, page, current_app.config['ITEMS_PER_PAGE'])
     return render_template('importers.html',seccion="importers", importers=importers, tipos_sorteo=tipos_sorteo)
 
 """ DELETE """

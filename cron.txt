@@ -1,54 +1,13 @@
 Importing Sorteos
-existe
-update 1201801146 viernes BONO
-Importing Sorteos
-update 1201901147 sábado BONO
-update 1202001148 domingo BONO
-update 1202101149 lunes BONO
-add 1202401152 jueves BONO
-['14 - 27 - 28 - 37 - 42 - 46 C(19) R(0)']
-update 1201801146 viernes BONO
-add 1202609044 sábado LNAC
-add 1203309046 sábado LNAC
-add 1201904063 sábado LAPR
-Done Importing
-Importing Sorteos
-update 1202101149 lunes BONO
-update 1202201150 martes BONO
-update 1202301151 miércoles BONO
-update 1202601154 sábado BONO
-['08 - 10 - 30 - 38 - 41 - 47 C(46) R(0)']
-update 1202001148 domingo BONO
-Done Importing
-Importing Sorteos
-update 1202104064 lunes LAPR
-add 1202804067 lunes LAPR
-update 1202201150 martes BONO
-update 1202301151 miércoles BONO
-update 1202401152 jueves BONO
-add 1202701155 domingo BONO
-update 1202101149 lunes BONO
-update 1201909042 sábado LNAC
-Done Importing
-Importing Sorteos
-update 1202104064 lunes LAPR
-update 1202301151 miércoles BONO
-update 1202401152 jueves BONO
-add 1202501153 viernes BONO
-add 1202801156 lunes BONO
-update 1202201150 martes BONO
-update 1201909042 sábado LNAC
-add 1202604066 sábado LAPR
-Done Importing
-Importing Sorteos
-update 1202104064 lunes LAPR
-update 1202401152 jueves BONO
+update 1202404065 jueves LAPR
+add 1203104068 jueves LAPR
+add 1202202043 martes EMIL
+add 1202502044 viernes EMIL
 update 1202501153 viernes BONO
 update 1202601154 sábado BONO
-add 1202901157 martes BONO
-update 1202301151 miércoles BONO
-update 1201909042 sábado LNAC
-add 1203109045 jueves LNAC
-add 1203809047 jueves LNAC
-update 1202404065 jueves LAPR
+update 1202701155 domingo BONO
+add 1203001158 miércoles BONO
+update 1202401152 jueves BONO
+add 1202409043 jueves LNAC
+update 1202804067 lunes LAPR
 Done Importing

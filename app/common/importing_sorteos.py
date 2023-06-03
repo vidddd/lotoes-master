@@ -91,6 +91,7 @@ class ImportingSorteos():
                                 
                             if(su.game_id == 'ELGR'):
                                 combinacion = sorteo.get('combinacion')
+                                print(combinacion)
                                 if combinacion is not None: 
                                     x = re.findall("[0-9]+", combinacion) 
                                     gordocomb = GordoPrimitivaCombinacion(
@@ -100,9 +101,7 @@ class ImportingSorteos():
                                             bola_3 = x[2],
                                             bola_4 = x[3],
                                             bola_5 = x[4],
-                                            bola_6 = x[5],
-                                            reintegro = x[6],
-                                            complementario = x[7])
+                                            clave = x[5])
                                     db.session.add(gordocomb)
                                 
                             if(su.game_id == 'EMIL'):
@@ -118,7 +117,7 @@ class ImportingSorteos():
                                             bola_5 = x[4],
                                             estrella_1 = x[5],
                                             estrella_2 = x[6])
-                                    db.session.add(gordocomb)
+                                    db.session.add(eurcomb)
                                 
                             if(su.game_id == 'LAQU'):
                                 combinacion = sorteo.get('combinacion')

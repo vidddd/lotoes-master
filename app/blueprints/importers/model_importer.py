@@ -46,8 +46,9 @@ class Importer(db.Model):
         return Importer.query.filter_by(activo=True).all()
 
     @staticmethod
-    def get_tipo_sorteo(tipo_sorteo):
-        return Importer.query.filter(Importer.tipo_sorteo==tipo_sorteo).all()
+    def get_tipo_sorteo(tipo_sorteo, page=1, per_page=20):
+        return Importer.query.filter(Importer.tipo_sorteo==tipo_sorteo).\
+            paginate(page=page, per_page=per_page, error_out=False)
 
     def delete(self):
         db.session.delete(self)

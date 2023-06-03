@@ -50,8 +50,9 @@ class Sorteo(db.Model):
         return Sorteo.query.get(id)
 
     @staticmethod
-    def get_tipo_sorteo(tipo_sorteo):
-        return Sorteo.query.filter(Sorteo.game_id==tipo_sorteo).all()
+    def get_tipo_sorteo(tipo_sorteo, page=1, per_page=20):
+        return Sorteo.query.filter(Sorteo.game_id==tipo_sorteo).order_by(Sorteo.fecha_sorteo.desc()).\
+            paginate(page=page, per_page=per_page, error_out=False)
     
     @staticmethod
     def exists(id_sorteo):

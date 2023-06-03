@@ -36,8 +36,31 @@
                       <div class="panel-heading">Sorteo Combinacion</div>
                       <div class="panel-body">
                         <div class="list-group">
-                          <a href="#" class="list-group-item"><strong>Loteria Nacional</strong> {{ sorteo.loteria_nacional_combinacion }}</a>
+                          <a href="#" class="list-group-item"><strong>Loteria Nacional </strong> {{ sorteo.loteria_nacional_combinacion }}</a>
                           <a href="#" class="list-group-item"><strong>Bonoloto </strong> {{ sorteo.bonoloto_combinacion }}</a>
+                          <a href="#" class="list-group-item"><strong>Primitiva </strong> {{ sorteo.primitiva_combinacion.id }}</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">Bonoloto Combinacion</div>
+                      <div class="panel-body">
+                        <div class="list-group">
+                          {% for combinacion in sorteo.bonoloto_conbinacion %}
+                            {{ combinacion.bola_1 }}
+                            <a href="#" class="list-group-item"><strong>Bonoloto </strong> {{ sorteo.bonoloto_combinacion }}</a>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">Primitiva Combinacion</div>
+                      <div class="panel-body">
+                        <div class="list-group">
+                          {% for combinacion in sorteo.primitiva_conbinacion %}
+                            {{ combinacion }}
+                            <a href="#" class="list-group-item"><strong>Primitiva </strong> {{ sorteo.primitiva_combinacion }}</a>
+                          {% endfor %}
                         </div>
                       </div>
                     </div>
