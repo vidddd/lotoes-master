@@ -12,9 +12,9 @@ from .extensions import register_error_handlers, configure_logging2
 db = SQLAlchemy()
 migrate = Migrate()
 mail = Mail()
-#login_manager = LoginManager()
-#login_manager.session_protection = 'strong'
-#login_manager.login_view = 'usuarios.login'
+login_manager = LoginManager()
+login_manager.session_protection = 'strong'
+login_manager.login_view = 'usuarios.login'
 
 def setdefaultencoding():
     if sys.version[0] == '2':
@@ -33,7 +33,7 @@ def create_app(set_utf=True):
     db.init_app(app)
     migrate.init_app(app, db)
     mail.init_app(app)
-    #login_manager.init_app(app)
+    login_manager.init_app(app)
 
     mount_blueprints(app, config_name)
     register_error_handlers(app)
