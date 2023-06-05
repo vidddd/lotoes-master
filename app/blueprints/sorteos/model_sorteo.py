@@ -116,6 +116,14 @@ class BonolotoCombinacion(db.Model):
     def __repr__(self):
         return f'<BonolotoCombinacion {self.id}>'
 
+    @staticmethod
+    def exists_by_sorteo_id(sorteo_id):
+        result = BonolotoCombinacion.query.filter(BonolotoCombinacion.sorteo_id == sorteo_id)
+        if result:
+            for sorteo in result:
+                return sorteo.id
+        else: return False
+
 class PrimitivaCombinacion(db.Model):
     #__tablename__ = 'primitiva_combinacion'
     id = db.Column(db.Integer, primary_key=True)
@@ -133,6 +141,14 @@ class PrimitivaCombinacion(db.Model):
     def __repr__(self):
         return f'<PrimitivaCombinacion {self.id}>'
 
+    @staticmethod
+    def exists_by_sorteo_id(sorteo_id):
+        result = PrimitivaCombinacion.query.filter(PrimitivaCombinacion.sorteo_id == sorteo_id)
+        if result:
+            for sorteo in result:
+                return sorteo.id
+        else: return False
+
 class EuromillonesCombinacion(db.Model):
     #__tablename__ = 'euromillones_combinacion'
     id = db.Column(db.Integer, primary_key=True)
@@ -149,6 +165,14 @@ class EuromillonesCombinacion(db.Model):
     def __repr__(self):
         return f'<EuromillonesCombinacion {self.id}>'
 
+    @staticmethod
+    def exists_by_sorteo_id(sorteo_id):
+        result = EuromillonesCombinacion.query.filter(EuromillonesCombinacion.sorteo_id == sorteo_id)
+        if result:
+            for sorteo in result:
+                return sorteo.id
+        else: return False
+
 class GordoPrimitivaCombinacion(db.Model):
     #__tablename__ = 'gordo_primitiva_combinacion'
     id = db.Column(db.Integer, primary_key=True)
@@ -164,6 +188,14 @@ class GordoPrimitivaCombinacion(db.Model):
     def __repr__(self):
         return f'<GordoPrimitivaCombinacion {self.id}>'
 
+    @staticmethod
+    def exists_by_sorteo_id(sorteo_id):
+        result = GordoPrimitivaCombinacion.query.filter(GordoPrimitivaCombinacion.sorteo_id == sorteo_id)
+        if result:
+            for sorteo in result:
+                return sorteo.id
+        else: return False
+
 class QuinielaPartidos(db.Model):
     #__tablename__ = 'quiniela_partidos'
     id = db.Column(db.Integer, primary_key=True)
@@ -172,10 +204,18 @@ class QuinielaPartidos(db.Model):
     local = db.Column(db.String(60))
     visitante = db.Column(db.String(60))
     signo = db.Column(db.String(8))
-    local = db.Column(db.String(8))
+    marcador = db.Column(db.String(8))
 
     def __repr__(self):
         return f'<QuinielaPartidos {self.id}>'
+
+    @staticmethod
+    def exists_by_sorteo_id(sorteo_id):
+        result = QuinielaPartidos.query.filter(QuinielaPartidos.sorteo_id == sorteo_id)
+        if result:
+            for sorteo in result:
+                return sorteo.id
+        else: return False
 
 class QuinigolPartidos(db.Model):
     #__tablename__ = 'quinigol_partidos'
@@ -185,10 +225,18 @@ class QuinigolPartidos(db.Model):
     local = db.Column(db.String(60))
     visitante = db.Column(db.String(60))
     signo = db.Column(db.String(8))
-    local = db.Column(db.String(8))
+    marcador = db.Column(db.String(8))
 
     def __repr__(self):
         return f'<QuinigolPartidos {self.id}>'
+
+    @staticmethod
+    def exists_by_sorteo_id(sorteo_id):
+        result = QuinigolPartidos.query.filter(QuinigolPartidos.sorteo_id == sorteo_id)
+        if result:
+            for sorteo in result:
+                return sorteo.id
+        else: return False
 
 class LototurfCombinacion(db.Model):
     #__tablename__ = 'lototurf_combinacion'
@@ -207,6 +255,14 @@ class LototurfCombinacion(db.Model):
     def __repr__(self):
         return f'<LototurfCombinacion {self.id}>'
     
+    @staticmethod
+    def exists_by_sorteo_id(sorteo_id):
+        result = LototurfCombinacion.query.filter(LototurfCombinacion.sorteo_id == sorteo_id)
+        if result:
+            for sorteo in result:
+                return sorteo.id
+        else: return False
+    
 class QuintupleplusCombinacion(db.Model):
     #__tablename__ = 'quintuple_plus_combinacion'
     id = db.Column(db.Integer, primary_key=True)
@@ -221,3 +277,11 @@ class QuintupleplusCombinacion(db.Model):
 
     def __repr__(self):
         return f'<QuintupleplusCombinacion {self.id}>'
+    
+    @staticmethod
+    def exists_by_sorteo_id(sorteo_id):
+        result = QuintuplePlusCombinacion.query.filter(QuintuplePlusCombinacion.sorteo_id == sorteo_id)
+        if result:
+            for sorteo in result:
+                return sorteo.id
+        else: return False

@@ -2,14 +2,14 @@ from flask import Blueprint,render_template,current_app
 from flask_mail import Message
 from app import mail
 from app.common.mail import send_email
-#from flask_login import login_required
+from flask_login import login_required
 
 BP_NM = 'dashboard'
 
 dashboard = Blueprint(BP_NM, __name__, template_folder='templates')
  
 @dashboard.route('/')
-#@login_required
+@login_required
 def dashboard_func():
    
     ''' send_email(subject='Holaaa',

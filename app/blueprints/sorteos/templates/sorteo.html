@@ -128,8 +128,11 @@
                         <div class="panel-heading">Quiniela Partidos</div>
                         <div class="panel-body">
                           <div class="list-group">
-                            {% for combinacion in sorteo.quiniela_partidos %}
-
+                            {% for partido in sorteo.quiniela_partidos %}
+                            <a href="#" class="list-group-item"><strong>Local</strong> {{ partido.local }}</a>
+                            <a href="#" class="list-group-item"><strong>Visitante</strong> {{ partido.visitante }}</a>
+                            <a href="#" class="list-group-item"><strong>Signo</strong> {{ partido.signo }}</a>
+                            <a href="#" class="list-group-item"><strong>Marcador</strong> {{ partido.marcador }}</a>
                             {% endfor %}
                           </div>
                         </div>

@@ -54,14 +54,17 @@ class ImportingSorteos():
                                         tercer_premio = sorteo.get('combinacion').get('tercer_premio'),
                                         fraccion = sorteo.get('combinacion').get('fraccion'),
                                         serie = sorteo.get('combinacion').get('serie'))
-                                    db.session.merge(lnaccomb)
+                                    db.session.add(lnaccomb)
+                                    print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                            
                             if(su.game_id == 'BONO'):
                                 combinacion = sorteo.get('combinacion')
                                 if combinacion is not None: 
                                     ''' Formato en que viene: 12 - 21 - 27 - 36 - 43 - 49 C(01) R(4) '''
-                                    x = re.findall("[0-9]+", combinacion) 
-                                    bonocomb = BonolotoCombinacion(
+                                    comb = BonolotoCombinacion.exists_by_sorteo_id(sorteo_id)
+                                    if comb is None:
+                                        x = re.findall("[0-9]+", combinacion) 
+                                        bonocomb = BonolotoCombinacion(
                                             sorteo_id = sorteo_id,
                                             bola_1 = x[0],
                                             bola_2 = x[1],
@@ -71,13 +74,16 @@ class ImportingSorteos():
                                             bola_6 = x[5],
                                             reintegro = x[6],
                                             complementario = x[7])
-                                    db.session.add(bonocomb)
+                                        db.session.add(bonocomb)
+                                        print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                     
                             if(su.game_id == 'LAPR'):
                                 combinacion = sorteo.get('combinacion')
-                                if combinacion is not None: 
-                                    x = re.findall("[0-9]+", combinacion) 
-                                    primicomb = PrimitivaCombinacion(
+                                if combinacion is not None:
+                                    comb = PrimitivaCombinacion.exists_by_sorteo_id(sorteo_id)
+                                    if comb is None:
+                                        x = re.findall("[0-9]+", combinacion) 
+                                        primicomb = PrimitivaCombinacion(
                                             sorteo_id = sorteo_id,
                                             bola_1 = x[0],
                                             bola_2 = x[1],
@@ -87,13 +93,15 @@ class ImportingSorteos():
                                             bola_6 = x[5],
                                             reintegro = x[6],
                                             complementario = x[7])
-                                    db.session.add(primicomb)
+                                        db.session.add(primicomb)
                                 
                             if(su.game_id == 'ELGR'):
                                 combinacion = sorteo.get('combinacion')
-                                if combinacion is not None: 
-                                    x = re.findall("[0-9]+", combinacion) 
-                                    gordocomb = GordoPrimitivaCombinacion(
+                                if combinacion is not None:
+                                    comb = GordoPrimitivaCombinacion.exists_by_sorteo_id(sorteo_id)
+                                    if comb is None:
+                                        x = re.findall("[0-9]+", combinacion) 
+                                        gordocomb = GordoPrimitivaCombinacion(
                                             sorteo_id = sorteo_id,
                                             bola_1 = x[0],
                                             bola_2 = x[1],
@@ -101,13 +109,16 @@ class ImportingSorteos():
                                             bola_4 = x[3],
                                             bola_5 = x[4],
                                             clave = x[5])
-                                    db.session.add(gordocomb)
+                                        db.session.add(gordocomb)
+                                        print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                                 
                             if(su.game_id == 'EMIL'):
                                 combinacion = sorteo.get('combinacion')
-                                if combinacion is not None: 
-                                    x = re.findall("[0-9]+", combinacion) 
-                                    eurcomb = EuromillonesCombinacion(
+                                if combinacion is not None:
+                                    comb = EuromillonesCombinacion.exists_by_sorteo_id(sorteo_id)
+                                    if comb is None:
+                                        x = re.findall("[0-9]+", combinacion) 
+                                        eurcomb = EuromillonesCombinacion(
                                             sorteo_id = sorteo_id,
                                             bola_1 = x[0],
                                             bola_2 = x[1],
@@ -116,33 +127,53 @@ class ImportingSorteos():
                                             bola_5 = x[4],
                                             estrella_1 = x[5],
                                             estrella_2 = x[6])
-                                    db.session.add(eurcomb)
+                                        db.session.add(eurcomb)
+                                        print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                                 
                             if(su.game_id == 'LAQU'):
-                                combinacion = sorteo.get('combinacion')
-                                if combinacion is not None: 
-                                    print(combinacion)
-                                    ''' quipar = QuinielaPartidos(
-                                            sorteo_id = sorteo_id,
-                                           )
-                                           '''
-                                    db.session.add(quipar)
+                                partidos = sorteo.get('partidos')
+                                if partidos is not None:
+                                    part = QuinielaPartidos.exists_by_sorteo_id(sorteo_id)
+                                    if part is None:
+                                        for partido in partidos:
+                                            quipar = QuinielaPartidos(
+                                                sorteo_id = sorteo_id,
+                                                local = partido['local'],
+                                                visitante = partido['visitante'],
+                                                signo = partido['signo'],
+                                                marcador = partido['marcador']
+                                                )
+                                            db.session.add(quipar)
+                                            print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                                         
                             if(su.game_id == 'QGOL'):
-                                combinacion = sorteo.get('combinacion')
-                                print(combinacion)
-                                    
+                                partidos = sorteo.get('partidos')
+                                if partidos is not None:
+                                    part = QuinigolPartidos.exists_by_sorteo_id(sorteo_id)
+                                    if part is None:
+                                        for partido in partidos:
+                                            quipar = QuinigolPartidos(
+                                                sorteo_id = sorteo_id,
+                                                local = partido['local'],
+                                                visitante = partido['visitante'],
+                                                signo = partido['signo'],
+                                                marcador = partido['marcador']
+                                                )
+                                            db.session.add(quipar)
+                                            print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
+                                           
                             if(su.game_id == 'LOTU'):
                                 combinacion = sorteo.get('combinacion')
                                 print(combinacion)
+                                print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                                     
                             if(su.game_id == 'QUPL'):
                                 combinacion = sorteo.get('combinacion')
                                 print('QUPL')
+                                print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                                                        
                         try:
                             db.session.commit()
-                            print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                             #send_email(subject='Lotoes Master - Update Sorteo', sender=current_app.config['LOTOES_MAIL_FROM'], recipients=[current_app.config['LOTOES_MAIL_SEND']],
                             #    text_body=f'update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
 

@@ -15,6 +15,7 @@ flask-migrate = "*"
 python-dotenv = "*"
 flask-mail = "*"
 requests = "*"
+email-validator = "*"
 
 [dev-packages]
 
