@@ -8,8 +8,8 @@ class Usuario(UserMixin, db.Model):
     __tablename__ = 'usuarios'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
-    password = db.Column(db.String(128))
-    email = db.Column(db.String(100))
+    password = db.Column(db.String(255))
+    email = db.Column(db.String(150), nullable=False, unique=True)
     is_admin = db.Column(db.Boolean)
     created = db.Column(db.DateTime)
     updated = db.Column(db.DateTime)
@@ -18,13 +18,9 @@ class Usuario(UserMixin, db.Model):
     def __repr__(self):
         return '<Usuario %r>' % self.username
     
-    @property
-    def password(self):
-        raise AttributeError('password is not a readable attribute')
-
-    def __init__(self, id, nombre, password, email, is_admin=False):
+    def __init__(self, id, username, password, email, is_admin=False):
         self.id = id
-        self.name = name
+        self.username = username
         self.email = email
         self.password = generate_password_hash(password)
         self.is_admin = is_admin
@@ -44,17 +40,28 @@ class Usuario(UserMixin, db.Model):
                 print(IntegrityError)
                 count += 1
     
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
+    def set_password(self, secret):
+        self.password = generate_password_hash(secret)
 
-    def verify_password(self, password):
-        return check_password_hash(self.password_hash, password)
+    def check_password(self, secret):
+        return check_password_hash(self.password, secret)
 
     def delete(self):
         db.session.delete(self)
         db.session.commit()
 
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):   
+        return True           
+
+    def is_anonymous(self):
+        return False          
+
+    def get_id(self):         
+        return str(self.id)
+        
     @staticmethod
     def get_by_id(id):
         return Usuario.query.get(id)

@@ -1,30 +1,50 @@
-from flask import Blueprint,render_template, request, current_app, url_for
-from flask_login import login_required
+from flask import Blueprint,render_template, request, current_app, url_for, flash, redirect
+from flask_login import login_required, login_user
 from .model_usuario import Usuario
 from .form_usuarios import LoginForm
+from app import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 BP_NM = 'usuarios'
 
 usuarios = Blueprint(BP_NM, __name__, template_folder='templates')
 
-@usuarios.route('/login')
+@usuarios.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user is not None and user.verify_password(form.password.data):
-            login_user(user, form.remember_me.data)
-            return redirect(request.args.get('next') or url_for('dashboard'))
-        print('Invalid username or password.')
-        flash('Invalid username or password.')
-    return render_template('login.html', form=form)
+    if form.validate_on_submit():   
+        email = form.email.data
+        password = form.password.data
+        remember_me = True if form.remember_me.data else False
+        usuario = Usuario.query.filter_by(email=email).first()
 
-@usuarios.route('/logout')
+        #if not usuario or not usuario.check_password(password):
+        #    flash('Please check your login details and try again.')
+        #    return render_template('login.html', form=form)
+
+        login_user(usuario)
+        return redirect(request.args.get('next') or url_for('dashboard.dashboard_func'))
+    else:
+        return render_template('login.html', form=form)
+        
+@usuarios.route('/logout', methods=['GET', 'POST'])
 @login_required
 def logout():
     logout_user()
     flash('You have been logged out.')
     return redirect(url_for('usuarios.login'))
+
+@usuarios.route('/sign-up', methods=['GET', 'POST'])
+def sign_up():
+    username='david'
+    email = 'david@devidd.com'
+    password = 'deivid39'
+    new_user = Usuario(id=None, username=username, password=generate_password_hash(password), email=email, is_admin=True)
+    db.session.add(new_user)
+    db.session.commit()
+    flash('user created.')
+    return redirect(url_for('usuarios.login'))
+
 
 @usuarios.route('/')
 @login_required
