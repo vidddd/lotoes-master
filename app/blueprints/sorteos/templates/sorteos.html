@@ -46,7 +46,7 @@
                     <tr>
                       <td><a href="{{ url_for('sorteos.sorteo', sorteo_id=sorteo.id) }}">{{ sorteo.id_sorteo }}</a></td>
                       <td>{{ sorteo.nombre|d('', true) }}</td>
-                      <td>{{ sorteo.fecha_sorteo.format('%d-%m-%Y') }}</td>
+                      <td>{{ sorteo.fecha_sorteo|date_dd }}</td>
                       <td>{{ sorteo.dia_semana|d('', true) }}</td>
                       <td>{{ sorteo.game_id }}</td>
                       <td>{{ sorteo.numero_sorteo|d('', true) }}</td>     

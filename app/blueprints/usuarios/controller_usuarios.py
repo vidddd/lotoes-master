@@ -3,7 +3,7 @@ from flask_login import login_required, login_user, logout_user
 from .model_usuario import Usuario
 from .form_usuarios import LoginForm
 from app import db
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 
 BP_NM = 'usuarios'
 

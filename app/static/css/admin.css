@@ -23,7 +23,7 @@
 * { font-family: 'Open Sans', sans-serif; }
 body { background-color: rgb(235,235,235); }
 h1 { font-size: 24px; }
-.btn a {
+.btn a, .text-login{
     color: white;
     text-decoration: none;
 }

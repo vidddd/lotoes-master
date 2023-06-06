@@ -1,5 +1,6 @@
 import logging
 from flask import render_template
+from datetime import datetime
 
 def register_error_handlers(app):
 
@@ -65,6 +66,15 @@ def configure_logging2(app):
 
     # Add file handler object to the logger
     app.logger.addHandler(file_handler)
+
+def template_filters(app):
+    @app.template_filter("date_dd")
+    def transform_date_dd_filter(date: str) -> str:
+        date3 = date.split(" ")
+        if date3[0]:
+            date = datetime.strptime(date3[0], "%Y-%m-%d").strftime("%d-%m-%Y")
+        return date
+
 
 def var_dump(var, prefix=''):
     """
