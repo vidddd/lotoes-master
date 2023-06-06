@@ -37,8 +37,8 @@ def logout():
 @usuarios.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     username='david'
-    email = 'david@devidd.com'
-    password = 'deivid39'
+    email = ''
+    password = ''
     new_user = Usuario(id=None, username=username, password=generate_password_hash(password), email=email, is_admin=True)
     db.session.add(new_user)
     db.session.commit()
