@@ -1,5 +1,5 @@
 from flask import Blueprint,render_template, request, current_app, url_for, flash, redirect
-from flask_login import login_required, login_user
+from flask_login import login_required, login_user, logout_user
 from .model_usuario import Usuario
 from .form_usuarios import LoginForm
 from app import db
@@ -19,8 +19,9 @@ def login():
         usuario = Usuario.query.filter_by(email=email).first()
 
         #if not usuario or not usuario.check_password(password):
-        #    flash('Please check your login details and try again.')
-        #    return render_template('login.html', form=form)
+        if not usuario:
+            flash('Please check your login details and try again.')
+            return render_template('login.html', form=form)
 
         login_user(usuario)
         return redirect(request.args.get('next') or url_for('dashboard.dashboard_func'))

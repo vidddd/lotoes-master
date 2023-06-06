@@ -4,14 +4,13 @@ from .model_importer import Importer
 from .form_importers import ImporterForm
 from config.lotoes_config import tipos_sorteo
 from app.common.importing_sorteos import ImportingSorteos
-
-#from flask_login import login_required
+from flask_login import login_required
 
 BP_NM = 'importers'
 importers = Blueprint(BP_NM, __name__, template_folder='templates')
  
 @importers.route('/')
-#@login_required
+@login_required
 def importers_index():
     page = int(request.args.get('page', 1))
     importers = Importer.all_paginated(page, current_app.config['ITEMS_PER_PAGE'])
@@ -20,7 +19,7 @@ def importers_index():
 """ NEW / EDIT """
 @importers.route('/form', methods=['GET', 'POST'], defaults={'importer_id': None})
 @importers.route('/form/<int:importer_id>', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def importer_form(importer_id=None):
     if importer_id:
         importer = Importer.get_by_id(importer_id)
@@ -40,12 +39,14 @@ def importer_form(importer_id=None):
 
 """ ACTIVE / DEACTIVE """
 @importers.route('/active-deactive/<int:importer_id>', methods=['GET', 'POST'])
+@login_required
 def importer_active_deactive(importer_id):
     flash('Importer activado correctamente!')
     return redirect(url_for('importers.importers_index'))
 
 """ FILTRO TIPOS """
 @importers.route('/tipo', methods=['GET'])
+@login_required
 def importer_tipo_sorteo():
     tipo_sorteo = request.args.get('tipo_sorteo', default = '')
     page = int(request.args.get('page', 1))
@@ -54,6 +55,7 @@ def importer_tipo_sorteo():
 
 """ DELETE """
 @importers.route('/delete/<int:importer_id>', methods=['GET', 'POST'])
+@login_required
 def importer_delete(importer_id):
     importer = Importer.get_by_id(importer_id)
     importer.delete()

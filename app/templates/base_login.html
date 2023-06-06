@@ -10,17 +10,9 @@
 </head>
 <body>
   <div id="main-wrapper">
-    <div class="navbar navbar-inverse" role="navigation">
-      <div class="navbar-header">
-        <div class="logo"><h1>Lotoes Master</h1></div>
-            <a href="{{ url_for('usuarios.login') }}" class="navbar-item">
-              Login
-            </a>
-            <a href="{{ url_for('usuarios.logout') }}" class="navbar-item">
-              Logout
-            </a>
-      </div>   
-    </div>
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock %}
     <div class="template-page-wrapper">
         {% for message in get_flashed_messages() %}
             <div class="alert alert-success alert-dismissible" role="alert">
