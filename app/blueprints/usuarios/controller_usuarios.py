@@ -3,7 +3,6 @@ from flask_login import login_required, login_user, logout_user
 from .model_usuario import Usuario
 from .form_usuarios import LoginForm
 from app import db
-from werkzeug.security import check_password_hash
 
 BP_NM = 'usuarios'
 
@@ -17,9 +16,11 @@ def login():
         password = form.password.data
         remember_me = True if form.remember_me.data else False
         usuario = Usuario.query.filter_by(email=email).first()
+        
+        print(usuario.check_password(password))
 
-        #if not usuario or not usuario.check_password(password):
-        if not usuario:
+        if not usuario or not usuario.check_password(password):
+        #if not usuario:
             flash('Please check your login details and try again.')
             return render_template('login.html', form=form)
 
@@ -38,10 +39,10 @@ def logout():
 
 @usuarios.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
-    username='david'
+    username=''
     email = ''
     password = ''
-    new_user = Usuario(id=None, username=username, password=generate_password_hash(password), email=email, is_admin=True)
+    new_user = Usuario(id=None, username=username, password=password, email=email, is_admin=True)
     db.session.add(new_user)
     db.session.commit()
     flash('user created.')

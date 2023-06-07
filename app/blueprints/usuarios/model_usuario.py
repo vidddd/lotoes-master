@@ -20,6 +20,7 @@ class Usuario(UserMixin, db.Model):
         return '<Usuario %r>' % self.username
     
     def __init__(self, id, username, password, email, is_admin=False):
+        generate_password_hash(password)
         self.id = id
         self.username = username
         self.email = email
