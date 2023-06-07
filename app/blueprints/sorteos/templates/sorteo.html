@@ -138,6 +138,57 @@
                         </div>
                       </div>
                     {% endif %}
+                    {% if sorteo.quinigol_partidos %}
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Quinigol Partidos</div>
+                        <div class="panel-body">
+                          <div class="list-group">
+                            {% for partido in sorteo.quinigol_partidos %}
+                            <a href="#" class="list-group-item"><strong>Local</strong> {{ partido.local }}</a>
+                            <a href="#" class="list-group-item"><strong>Visitante</strong> {{ partido.visitante }}</a>
+                            <a href="#" class="list-group-item"><strong>Signo</strong> {{ partido.signo }}</a>
+                            <a href="#" class="list-group-item"><strong>Marcador</strong> {{ partido.marcador }}</a>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if sorteo.lototurf_combinacion %}
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Lototurf Combinacion</div>
+                        <div class="panel-body">
+                          <div class="list-group">
+                            {% for combinacion in sorteo.lototurf_combinacion %}
+                            <a href="#" class="list-group-item"><strong>Bola 1 </strong> {{ combinacion.bola_1 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 2 </strong> {{ combinacion.bola_2 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 3 </strong> {{ combinacion.bola_3 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 4 </strong> {{ combinacion.bola_4 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 5 </strong> {{ combinacion.bola_5 }}</a>
+                            <a href="#" class="list-group-item"><strong>Bola 6 </strong> {{ combinacion.bola_6 }}</a>
+                            <a href="#" class="list-group-item"><strong>Caballo </strong> {{ combinacion.caballo }}</a>
+                            <a href="#" class="list-group-item"><strong>Reintegro </strong> {{ combinacion.reintegro }}</a>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if sorteo.quintuple_plus_combinacion %}
+                      <div class="panel panel-primary">
+                        <div class="panel-heading">Lototurf Combinacion</div>
+                        <div class="panel-body">
+                          <div class="list-group">
+                            {% for combinacion in sorteo.quintuple_plus_combinacion %}
+                            <a href="#" class="list-group-item"><strong>Caballo 1 </strong> {{ combinacion.bola_1 }}</a>
+                            <a href="#" class="list-group-item"><strong>Caballo 2 </strong> {{ combinacion.bola_2 }}</a>
+                            <a href="#" class="list-group-item"><strong>Caballo 3 </strong> {{ combinacion.bola_3 }}</a>
+                            <a href="#" class="list-group-item"><strong>Caballo 4 </strong> {{ combinacion.bola_4 }}</a>
+                            <a href="#" class="list-group-item"><strong>Caballo 5 </strong> {{ combinacion.bola_5 }}</a>
+                            <a href="#" class="list-group-item"><strong>Caballo 6 </strong> {{ combinacion.bola_6 }}</a>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
                     <span class="btn btn-primary"><a href="/sorteos">Sorteos</a></span>
                   </div>
             </div>

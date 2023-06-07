@@ -38,7 +38,6 @@
                       <th>Apuestas</th>
                       <th>Recaudacion</th>
                       <th>Combinacion</th>
-                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -57,20 +56,6 @@
                         {% if sorteo.loteria_nacional_combinacion or sorteo.bonoloto_combinacion or sorteo.primitiva_combinacion or sorteo.gordo_primitiva_combinacion or sorteo.euromillones_combinacion or sorteo.quiniela_partidos or sorteo.quinigol_partidos or sorteo.lototurf_combinacion or sorteo.quintuple_plus_combinacion %}
                           <a href="{{ url_for('sorteos.sorteo', sorteo_id=sorteo.id) }}">Resultados</a>
                         {% endif %}
-                      </td>
-                      <td>
-                        <div class="btn-group">
-                          <button type="button" class="btn btn-info">Action</button>
-                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Bootstrap</a></li>
-                            <li><a href="#">Font Awesome</a></li>
-                            <li><a href="#">jQuery</a></li>
-                          </ul>
-                        </div>
                       </td>
                     </tr>   
                     {% endfor %}
@@ -95,7 +80,6 @@
                 {% if sorteos.has_next %}
                   <li><a href="{{ url_for('sorteos.sorteos_index', page=sorteos.next_num) }}">&raquo;</a></li>
                 {% endif %}
- 
               </ul>  
             </div>
           </div>

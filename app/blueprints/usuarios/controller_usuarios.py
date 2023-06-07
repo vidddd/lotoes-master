@@ -24,6 +24,7 @@ def login():
             return render_template('login.html', form=form)
 
         login_user(usuario)
+        usuario.ping_last_login()
         return redirect(request.args.get('next') or url_for('dashboard.dashboard_func'))
     else:
         return render_template('login.html', form=form)

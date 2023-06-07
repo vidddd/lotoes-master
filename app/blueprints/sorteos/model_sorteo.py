@@ -280,7 +280,7 @@ class QuintupleplusCombinacion(db.Model):
     
     @staticmethod
     def exists_by_sorteo_id(sorteo_id):
-        result = QuintuplePlusCombinacion.query.filter(QuintuplePlusCombinacion.sorteo_id == sorteo_id)
+        result = QuintupleplusCombinacion.query.filter(QuintupleplusCombinacion.sorteo_id == sorteo_id)
         if result:
             for sorteo in result:
                 return sorteo.id

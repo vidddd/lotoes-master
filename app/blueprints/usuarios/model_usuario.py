@@ -13,6 +13,7 @@ class Usuario(UserMixin, db.Model):
     is_admin = db.Column(db.Boolean)
     created = db.Column(db.DateTime)
     updated = db.Column(db.DateTime)
+    last_login = db.Column(db.DateTime)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     
     def __repr__(self):
@@ -61,7 +62,7 @@ class Usuario(UserMixin, db.Model):
 
     def get_id(self):         
         return str(self.id)
-        
+
     @staticmethod
     def get_by_id(id):
         return Usuario.query.get(id)
@@ -79,6 +80,11 @@ class Usuario(UserMixin, db.Model):
         return Usuario.query.order_by(Usuario.id.desc()).\
             paginate(page=page, per_page=per_page, error_out=False)
 
+    def ping_last_login(self):
+        #print(datetime.utcnow())
+        self.last_login = datetime.utcnow()
+        db.session.add(self)
+        db.session.commit()
 
 class Role(db.Model):
     __tablename__ = 'roles'

@@ -164,13 +164,39 @@ class ImportingSorteos():
                                            
                             if(su.game_id == 'LOTU'):
                                 combinacion = sorteo.get('combinacion')
-                                print(combinacion)
-                                print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
-                                    
+                                if combinacion is not None:
+                                    comb = LototurfCombinacion.exists_by_sorteo_id(sorteo_id)
+                                    if comb is None:
+                                        x = re.findall("[0-9]+", combinacion) 
+                                        lotucomb = LototurfCombinacion(
+                                            sorteo_id = sorteo_id,
+                                            bola_1 = x[0],
+                                            bola_2 = x[1],
+                                            bola_3 = x[2],
+                                            bola_4 = x[3],
+                                            bola_5 = x[4],
+                                            bola_6 = x[5],
+                                            caballo = x[6],
+                                            reintegro = x[7])
+                                        db.session.add(lotucomb)
+                                        print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
+                                                                    
                             if(su.game_id == 'QUPL'):
                                 combinacion = sorteo.get('combinacion')
-                                print('QUPL')
-                                print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
+                                if combinacion is not None:
+                                    comb = QuintupleplusCombinacion.exists_by_sorteo_id(sorteo_id)
+                                    if comb is None:
+                                        x = re.findall("[0-9]+", combinacion) 
+                                        qucomb = QuintupleplusCombinacion(
+                                            sorteo_id = sorteo_id,
+                                            bola_1 = x[0],
+                                            bola_2 = x[1],
+                                            bola_3 = x[2],
+                                            bola_4 = x[3],
+                                            bola_5 = x[4],
+                                            bola_6 = x[5])
+                                        db.session.add(qucomb)
+                                        print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
                                                        
                         try:
                             db.session.commit()
