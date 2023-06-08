@@ -1,0 +1,8 @@
+Importing Sorteos
+update 1203001158 miércoles BONO
+update 1203003033 miércoles LOTU
+update 1203008033 miércoles QUPL
+add 1203601164 martes BONO
+update 1203809047 jueves LNAC
+add 1204509049 jueves LNAC
+Done Importing

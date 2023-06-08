@@ -1,27 +1,28 @@
-#from flask_login import UserMixin
-#from flask_login import login_manager
+from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
-from app import db
+from app import db, login_manager
 
-class Usuario(db.Model):
+class Usuario(UserMixin, db.Model):
     __tablename__ = 'usuarios'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50))
-    password = db.Column(db.String(80))
-    email = db.Column(db.String(100))
+    password = db.Column(db.String(255))
+    email = db.Column(db.String(150), nullable=False, unique=True)
     is_admin = db.Column(db.Boolean)
     created = db.Column(db.DateTime)
     updated = db.Column(db.DateTime)
+    last_login = db.Column(db.DateTime)
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     
     def __repr__(self):
         return '<Usuario %r>' % self.username
     
-    def __init__(self, id, nombre, password, email, is_admin=False):
+    def __init__(self, id, username, password, email, is_admin=False):
+        generate_password_hash(password)
         self.id = id
-        self.name = name
+        self.username = username
         self.email = email
         self.password = generate_password_hash(password)
         self.is_admin = is_admin
@@ -40,10 +41,28 @@ class Usuario(db.Model):
             except IntegrityError:
                 print(IntegrityError)
                 count += 1
+    
+    def set_password(self, secret):
+        self.password = generate_password_hash(secret)
+
+    def check_password(self, secret):
+        return check_password_hash(self.password, secret)
 
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):   
+        return True           
+
+    def is_anonymous(self):
+        return False          
+
+    def get_id(self):         
+        return str(self.id)
 
     @staticmethod
     def get_by_id(id):
@@ -57,6 +76,16 @@ class Usuario(db.Model):
     def get_all():
         return Usuario.query.all()
 
+    @staticmethod
+    def all_paginated(page=1, per_page=20):
+        return Usuario.query.order_by(Usuario.id.desc()).\
+            paginate(page=page, per_page=per_page, error_out=False)
+
+    def ping_last_login(self):
+        #print(datetime.utcnow())
+        self.last_login = datetime.utcnow()
+        db.session.add(self)
+        db.session.commit()
 
 class Role(db.Model):
     __tablename__ = 'roles'
@@ -67,6 +96,6 @@ class Role(db.Model):
     def __repr__(self):
         return '<Role %r>' % self.name
 
-#@login_manager.user_loader
-#def load_user(user_id):
-#    return Usuario.query.get(int(user_id))
+@login_manager.user_loader
+def load_user(user_id):
+    return Usuario.query.get(int(user_id))

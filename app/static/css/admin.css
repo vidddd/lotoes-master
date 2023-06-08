@@ -23,14 +23,14 @@
 * { font-family: 'Open Sans', sans-serif; }
 body { background-color: rgb(235,235,235); }
 h1 { font-size: 24px; }
-.btn a {
+.btn a, .text-login{
     color: white;
     text-decoration: none;
 }
 .logo { display: inline-block; }
 .logo h1 {
     font-size: 28px;
-    margin: 10px 15px;
+    margin: 10px 65px;
     color: #DFDFDF;
 }
 .templatemo-content-wrapper {
@@ -56,6 +56,10 @@ h1 { font-size: 24px; }
 .margin-bottom-15 { margin-bottom: 15px; }
 .margin-bottom-30 { margin-bottom: 30px; }
 
+.text-login{
+    padding:10px 60px;
+}
+
 /* 3. Sidebar
 ------------------------------------------------------*/
 #templatemo_search_box {
@@ -65,6 +69,7 @@ h1 { font-size: 24px; }
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
+
 }
 .navbar-header { color: rgb(127,127,127); }
 .templatemo-sidebar {

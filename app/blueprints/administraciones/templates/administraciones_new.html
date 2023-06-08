@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Administraciones{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb"><li><a href="/">Dashboard</a></li><li class="active">Administraciones</li>
+</ol>
+<h1>Nueva Administracion</h1>
+<div class="row">
+    <div class="col-md-12">
+        <form role="form" id="cliente-new" name="cliente-new" method="POST">
+            <div class="row">
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.nombre.label }} {{ form.nombre(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.contacto.label }} {{ form.contacto(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.codigoSelae.label }} {{ form.codigoSelae(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.telefono.label }} {{ form.telefono(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.movil.label }} {{ form.movil(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.web.label }} {{ form.web(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.direccion.label }} {{ form.direccion(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.municipio.label }} {{ form.municipio(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.cp.label }} {{ form.cp(class='form-control') }}                
+              </div>
+            </div>
+            <div class="row templatemo-form-buttons">
+                <div class="col-md-12">
+                  {{ form.submit(class='btn btn-primary') }}
+                  <button type="reset" class="btn btn-default">Reset</button>    
+                </div>
+            </div>{{ form.csrf_token }}
+        </form>
+    </div>
+</div>
+<hr/>
+<div class="row">
+  <div class="col-md-12">
+    <span class="btn btn-success"><a href="/clientes">Clientes</a></span>
+  </div>
+</div>
+{% endblock %}

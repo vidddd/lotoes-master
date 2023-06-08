@@ -1,0 +1,98 @@
+
+{% extends "base.html" %}
+
+{% block title %}Importers{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+            <li><a href="/">Dashboard</a></li>
+            <li class="active">Importers</li>
+          </ol>
+          <h1>Importers</h1>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="btn-group pull-right" id="templatemo_sort_btn">
+                <span class="btn btn-success"><a href="/importers/form">Nuevo Importer</a></span>
+                <button type="button" class="btn btn-default">Filtro</button>
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Filtro</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    {% for key, value in tipos_sorteo %}
+                      <li><a href="{{ url_for('importers.importer_tipo_sorteo', tipo_sorteo=key ) }}">{{ value }}</a></li>
+                    {% endfor %}
+                  </ul>
+              </div>
+              <div class="table-responsive">
+                <h4 class="margin-bottom-15"></h4>
+                <table class="table table-striped table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nombre</th>
+                      <th>Tipo Sorteo</th>
+                      <th>Url</th>
+                      <th>Actualizar Existentes</th>
+                      <th>Parámetro Fecha</th>
+                      <th>Activo</th>
+                      <th>Dias</th>
+                      <th>Creado</th>
+                      <th>Modificado</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for importer in importers %}
+                    <tr>
+                      <td>{{ importer.id }}</td>
+                      <td>{{ importer.nombre }}</td>
+                      <td>{{ importer.tipo_sorteo }}</td>
+                      <td>{{ importer.url }}</td>
+                      <td>{{ importer.actualizar_existentes }}</td>
+                      <td>{{ importer.parametro_fecha }}</td>
+                      <td>{{ importer.activo }}</td>
+                      <td>{{ importer.dias }}</td>
+                      <td>{{ importer.creado }}</td>
+                      <td>{{ importer.modificado }}</td>
+                      <td><div class="btn-group">
+                        <button type="button" class="btn btn-info">Action</button>
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                          <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a title="Editar" href="{{ url_for('importers.importer_form', importer_id=importer.id) }}">Editar</a></li>
+                          <li><a title="Activar / Desactivar" href="{{ url_for('importers.importer_active_deactive', importer_id=importer.id) }}">Activar/Desactivar</a></li>
+                          <li><a title="Borrar" href="{{ url_for('importers.importer_delete', importer_id=importer.id) }}" onclick="return confirm('Estas Seguro? esta accion no se puede desacer.');">Borrar</a></li>
+                        </ul>
+                      </div></td>
+                    </tr>   
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <ul class="pagination pull-right">
+                {% if importers.has_prev %}
+                    <li><a href="{{ url_for('importers.importers_index', page=importers.prev_num) }}">&laquo;</a></li>
+                {% endif %}
+
+                {%- for page in importers.iter_pages() %}
+                  {% if page %}
+                    {% if page != importers.page %}
+                                <li><a href="{{ url_for('importers.importers_index', page=page) }}">{{ page }} <span class="sr-only">(current)</span></a></li>
+                        {% else %}
+                                <li class="active"><a href="#">{{ page }} <span class="sr-only">(current)</span></a></li>
+                        {% endif %}
+                    {% else %}
+                    {{ page.next_num }}
+                  {% endif %}
+                {%- endfor %}
+                
+                {% if importers.has_next %}
+                  <li><a href="{{ url_for('importers.importers_index', page=importers.next_num) }}">&raquo;</a></li>
+                {% endif %}
+              </ul>  
+            </div>
+          </div>
+
+{% endblock %}

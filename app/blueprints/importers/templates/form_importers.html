@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Importers{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb"><li><a href="/">Dashboard</a></li><li class="active">Importers</li>
+</ol>
+<h1>Form Importer</h1>
+<div class="row">
+    <div class="col-md-12">
+        <form role="form" id="importer-form" name="importer-form" method="POST">
+            <div class="row">
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.nombre.label }} {{ form.nombre(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.tipo_sorteo.label }} {{ form.tipo_sorteo(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.url.label }} {{ form.url(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.parametro_fecha.label }} {{ form.parametro_fecha(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.dias.label }} {{ form.dias(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.actualizar_existentes.label }} {{ form.actualizar_existentes(class='form-control') }}                
+              </div>
+              <div class="col-md-6 margin-bottom-15">
+                {{ form.activo.label }} {{ form.activo(class='form-control') }}                
+              </div>
+            </div>
+            <div class="row templatemo-form-buttons">
+                <div class="col-md-12">
+                  {{ form.submit(class='btn btn-primary') }}
+                  <button type="reset" class="btn btn-default">Reset</button>    
+                </div>
+            </div>{{ form.csrf_token }}
+        </form>
+    </div>
+</div>
+<hr/>
+<div class="row">
+  <div class="col-md-12">
+    <span class="btn btn-success"><a href="/importers">Importers</a></span>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header pull-left">
+      <div class="logo "><h1>Lotoes Master</h1></div>
+    </div>  
+    <div class="text-login text-end pull-right">
+        {% if current_user.is_authenticated %}
+        Hola {{current_user.email}} &nbsp;&nbsp; <a href="{{ url_for('usuarios.logout') }}"><button type="button" class="btn btn-danger me-2">Logout</button></a>
+        {% else %}
+            <a href="{{ url_for('usuarios.login') }}"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+        {% endif %}
+      </div> 
+  </div>
