@@ -12,4 +12,4 @@ import app as application
 app = application.create_app()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5032, debug=True)
+    app.run(host="0.0.0.0", port=5033, debug=True)

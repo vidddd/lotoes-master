@@ -1,11 +1,8 @@
 Importing Sorteos
-update 1202902045 martes EMIL
-update 1202901157 martes BONO
-add 1203003033 miércoles LOTU
-4 - 6 - 13 - 14 - 18 - 26 C(1) R(3)
-update 1202603032 sábado LOTU
-add 1203008033 miércoles QUPL
-QUPL
-update 1202608032 sábado QUPL
-add 1203501163 lunes BONO
+update 1203001158 miércoles BONO
+update 1203003033 miércoles LOTU
+update 1203008033 miércoles QUPL
+add 1203601164 martes BONO
+update 1203809047 jueves LNAC
+add 1204509049 jueves LNAC
 Done Importing

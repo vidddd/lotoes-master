@@ -45,7 +45,9 @@ class ImportingSorteos():
                             su.escrutinio=sorteo.get('escrutinio')
                             su.apuestas=sorteo.get('apuestas')
                             if(su.game_id == 'LNAC'):
-                                comb = LoteriaNacionalCombinacion.exists_by_sorteo_id(sorteo_id)
+                                #comb = LoteriaNacionalCombinacion.exists_by_sorteo_id(sorteo_id)
+                                # solo guardamos cuando existen resultados
+                                comb = sorteo.get('combinacion').get('primer_premio')
                                 if comb is None:
                                     lnaccomb = LoteriaNacionalCombinacion(
                                         sorteo_id = sorteo_id,
