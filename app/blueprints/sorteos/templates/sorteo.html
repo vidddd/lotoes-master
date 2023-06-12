@@ -127,13 +127,28 @@
                       <div class="panel panel-primary">
                         <div class="panel-heading">Quiniela Partidos</div>
                         <div class="panel-body">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Local</th>
+                                <th>Visitante</th>
+                                <th>Signo</th>
+                                <th>Marcador</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for partido in sorteo.quiniela_partidos %}
+                              <tr>
+                                <td>{{ partido.local }}</td>
+                                <td>{{ partido.visitante }}</td>
+                                <td>{{ partido.signo }}</td>
+                                <td>{{ partido.marcador }}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
                           <div class="list-group">
-                            {% for partido in sorteo.quiniela_partidos %}
-                            <a href="#" class="list-group-item"><strong>Local</strong> {{ partido.local }}</a>
-                            <a href="#" class="list-group-item"><strong>Visitante</strong> {{ partido.visitante }}</a>
-                            <a href="#" class="list-group-item"><strong>Signo</strong> {{ partido.signo }}</a>
-                            <a href="#" class="list-group-item"><strong>Marcador</strong> {{ partido.marcador }}</a>
-                            {% endfor %}
+
                           </div>
                         </div>
                       </div>
@@ -142,14 +157,26 @@
                       <div class="panel panel-primary">
                         <div class="panel-heading">Quinigol Partidos</div>
                         <div class="panel-body">
-                          <div class="list-group">
-                            {% for partido in sorteo.quinigol_partidos %}
-                            <a href="#" class="list-group-item"><strong>Local</strong> {{ partido.local }}</a>
-                            <a href="#" class="list-group-item"><strong>Visitante</strong> {{ partido.visitante }}</a>
-                            <a href="#" class="list-group-item"><strong>Signo</strong> {{ partido.signo }}</a>
-                            <a href="#" class="list-group-item"><strong>Marcador</strong> {{ partido.marcador }}</a>
-                            {% endfor %}
-                          </div>
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Local</th>
+                                <th>Visitante</th>
+                                <th>Signo</th>
+                                <th>Marcador</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for partido in sorteo.quiniela_partidos %}
+                              <tr>
+                                <td>{{ partido.local }}</td>
+                                <td>{{ partido.visitante }}</td>
+                                <td>{{ partido.signo }}</td>
+                                <td>{{ partido.marcador }}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
                         </div>
                       </div>
                     {% endif %}
