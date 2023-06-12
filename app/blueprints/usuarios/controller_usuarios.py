@@ -16,11 +16,8 @@ def login():
         password = form.password.data
         remember_me = True if form.remember_me.data else False
         usuario = Usuario.query.filter_by(email=email).first()
-        
-        print(usuario.check_password(password))
 
         if not usuario or not usuario.check_password(password):
-        #if not usuario:
             flash('Please check your login details and try again.')
             return render_template('login.html', form=form)
 
