@@ -225,3 +225,35 @@ h1 { font-size: 24px; }
         padding-right: 0;
     }
 }
+
+.loteria-nacional, .LNAC {
+   color: #2d6b9f;
+}
+.euromillones, .EMIL {
+   color: #153f69;
+}
+.bonoloto, .BONO {
+   color: #7a8634;
+}
+.primitiva, .LAPR {
+   color: #008547;
+}
+.gordo, .ELGR {
+    color: #dc3f47;
+}
+.quiniela, .LAQU {
+    color: #cb1517;
+}
+.quinigol, .QGOL {
+    color: #79cfdd;
+}
+.lototurf, .LOTU {
+    color: #d16929;
+}
+.quintuple-plus, .QUPL {
+    color: #eab842;
+}
+.tipo-sorteo{
+    font-weight: bold;
+    font-size: 1em;
+}
