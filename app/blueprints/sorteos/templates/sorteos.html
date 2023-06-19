@@ -47,7 +47,7 @@
                       <td>{{ sorteo.nombre|d('', true) }}</td>
                       <td>{{ sorteo.fecha_sorteo|date_dd }}</td>
                       <td>{{ sorteo.dia_semana|d('', true) }}</td>
-                      <td>{{ sorteo.game_id }}</td>
+                      <td class="tipo-sorteo {{ sorteo.game_id }}">{{ sorteo.game_id }}</td>
                       <td>{{ sorteo.numero_sorteo|d('', true) }}</td>     
                       <td>{{ sorteo.premio_bote|d('', true) }}</td> 
                       <td>{{ sorteo.apuestas|d('', true) }}</td>

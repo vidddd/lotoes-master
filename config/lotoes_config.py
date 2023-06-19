@@ -5,7 +5,7 @@ tipos_sorteo_dic = {
   "euromillones": "Euromillones",
   "primitiva": "Primitiva",
   "gordo-primitiva": "Gordo Primitiva",
-  "quinela": "Quiniela",
+  "quiniela": "Quiniela",
   "quinigol": "Quinigol",
   "lototurf": "Lototurf",
   "quintuple-plus": "Quintuple Plus"
@@ -18,7 +18,7 @@ tipos_sorteo = [
     ("euromillones", "Euromillones"),
     ("primitiva", "Primitiva"),
     ("gordo-primitiva", "Gordo Primitiva"),
-    ("quinela", "Quiniela"),
+    ("quiniela", "Quiniela"),
     ("quinigol", "Quinigol"),
     ("lototurf", "Lototurf"),
     ("quintuple-plus", "Quintuple Plus")
