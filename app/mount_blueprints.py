@@ -10,6 +10,7 @@ def mount_blueprints(app, config_name):
     from app.blueprints.clientes import clientes
     from app.blueprints.administraciones import administraciones
     from app.blueprints.importers import importers
+    from app.blueprints.logs import logs
 
     app.register_blueprint(dashboard, url_prefix='')
     app.register_blueprint(api, url_prefix='/api')
@@ -18,3 +19,4 @@ def mount_blueprints(app, config_name):
     app.register_blueprint(clientes, url_prefix='/clientes')
     app.register_blueprint(administraciones, url_prefix='/administraciones')
     app.register_blueprint(importers, url_prefix='/importers')
+    app.register_blueprint(logs, url_prefix='/logs')

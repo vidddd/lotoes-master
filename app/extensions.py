@@ -16,8 +16,8 @@ def register_error_handlers(app):
     def error_401_handler(e):
         return render_template('401.html'), 401
     
+'''
 def configure_logging(app):
-    # Elimina los manejadores por defecto de la app
     del app.logger.handlers[:]
     loggers = [app.logger, ]
     handlers = []
@@ -37,6 +37,7 @@ def configure_logging(app):
             l.addHandler(handler)
         l.propagate = False
         l.setLevel(logging.DEBUG)
+     '''
         
 def verbose_formatter():
     return logging.Formatter(
@@ -44,7 +45,7 @@ def verbose_formatter():
         datefmt='%d/%m/%Y %H:%M:%S'
     )
 
-def configure_logging2(app):
+def configure_logging(app):
     import logging
     from flask.logging import default_handler
     from logging.handlers import RotatingFileHandler
@@ -53,10 +54,10 @@ def configure_logging2(app):
     app.logger.removeHandler(default_handler)
 
     # Create a file handler object
-    file_handler = RotatingFileHandler('lotoes-master.log', maxBytes=16384, backupCount=20)
+    file_handler = RotatingFileHandler('logs/lotoes-master.log', maxBytes=16384, backupCount=20)
 
     # Set the logging level of the file handler object so that it logs INFO and up
-    file_handler.setLevel(logging.INFO)
+    # file_handler.setLevel(logging.INFO)
 
     # Create a file formatter object
     file_formatter = logging.Formatter('%(asctime)s %(levelname)s: %(message)s [in %(filename)s: %(lineno)d]')
