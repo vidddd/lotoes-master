@@ -212,6 +212,7 @@ class QuinielaPartidos(db.Model):
     @staticmethod
     def exists_by_sorteo_id(sorteo_id):
         result = QuinielaPartidos.query.filter(QuinielaPartidos.sorteo_id == sorteo_id)
+        print(result)
         if result:
             for sorteo in result:
                 return sorteo.id

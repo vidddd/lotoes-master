@@ -23,6 +23,7 @@ def login():
 
         login_user(usuario)
         usuario.ping_last_login()
+        current_app.logger.info('%s logged in successfully', usuario.email)
         return redirect(request.args.get('next') or url_for('dashboard.dashboard_func'))
     else:
         return render_template('login.html', form=form)

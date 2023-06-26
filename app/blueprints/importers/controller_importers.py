@@ -71,7 +71,7 @@ def importer_delete(importer_id):
 @importers.cli.command('import')
 @click.argument('tipo_sorteo', required=False)
 def importing(tipo_sorteo=None):
-    print('Importing Sorteos')
+    current_app.logger.debug("Start Importing............")
 
     importing = ImportingSorteos()
 
@@ -82,4 +82,4 @@ def importing(tipo_sorteo=None):
     else:
         importing.importingAll()
 
-    print('Done Importing')
+    current_app.logger.debug("Done Importing............")

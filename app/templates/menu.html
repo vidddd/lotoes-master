@@ -5,6 +5,7 @@
           <li class="{% if seccion == 'clientes' %}active{% endif %}"><a href="/clientes"><i class="fa fa-users"></i>Clientes</a></li>
           <li class="{% if seccion == 'administraciones' %}active{% endif %}"><a href="/administraciones"><i class="fa fa-building-o"></i>Administraciones</a></li>
           <li class="{% if seccion == 'importers' %}active{% endif %}"><a href="/importers"><i class="fa fa-bars"></i>Importers</a></li>
+          <li class="{% if seccion == 'logs' %}active{% endif %}"><a href="/logs"><i class="fa fa-bars"></i>Logs</a></li>
           <li><a href="{{ url_for('usuarios.logout') }}"><i class="fa fa-sign-out"></i>Salir</a></li>
           <!--
           <li class="sub open">

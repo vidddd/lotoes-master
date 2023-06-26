@@ -108,3 +108,4 @@ ENV/
 lotoes-master.log*
 cron.txt
 cron.sh
+/logs
