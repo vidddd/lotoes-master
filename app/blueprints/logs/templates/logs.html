@@ -4,10 +4,33 @@
 {% block title %}Logs{% endblock %}
 
 {% block content %} 
-    <h1>Logs</h1>
-    <div id="logs">
-        {% for log in logs %}
-            {{ log }}<br/>
-        {% endfor %}
+<h1>Logs</h1>
+<div id="logs">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log }}</td>
+            </tr>
+            {% endfor %}             
+          </tbody>
+        </table>
+      </div>
+      <ul class="pagination pull-right">
+        <li class="disabled"><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">4 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">5 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">&raquo;</a></li>
+      </ul>  
     </div>
+</div>
 {% endblock %}

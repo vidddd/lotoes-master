@@ -15,6 +15,7 @@ logs = Blueprint(BP_NM, __name__, template_folder='templates')
 def logs_func():
     with open('logs/lotoes-master.log') as f:
         logs = [row.rstrip('\n') for row in f]
+        logs.sort(reverse=True)
     return render_template('logs.html', logs=logs, seccion="logs")
 
 @logs.errorhandler(404)

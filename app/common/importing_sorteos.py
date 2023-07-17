@@ -78,7 +78,7 @@ class ImportingSorteos():
                                             reintegro = x[6],
                                             complementario = x[7])
                                         db.session.add(bonocomb)
-                                        current_app.logger.info('Update sorteo %s - %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('fecha_sorteo'))
+                                        current_app.logger.info('Update sorteo %s - %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('dia_semana'), sorteo.get('fecha_sorteo'))
                                                             
                             if(su.game_id == 'LAPR'):
                                 combinacion = sorteo.get('combinacion')
@@ -97,8 +97,7 @@ class ImportingSorteos():
                                             reintegro = x[6],
                                             complementario = x[7])
                                         db.session.add(primicomb)
-                                        current_app.logger.info('Update sorteo %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('fecha_sorteo'))
-                                        
+                                        current_app.logger.info('Update sorteo %s - %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('dia_semana'), sorteo.get('fecha_sorteo'))                                    
                                 
                             if(su.game_id == 'ELGR'):
                                 combinacion = sorteo.get('combinacion')
@@ -115,7 +114,8 @@ class ImportingSorteos():
                                             bola_5 = x[4],
                                             clave = x[5])
                                         db.session.add(gordocomb)
-                                        current_app.logger.info('Update sorteo %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('fecha_sorteo'))
+                                        current_app.logger.info('Update sorteo %s - %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('dia_semana'), sorteo.get('fecha_sorteo'))
+
                                 
                             if(su.game_id == 'EMIL'):
                                 combinacion = sorteo.get('combinacion')
@@ -133,7 +133,8 @@ class ImportingSorteos():
                                             estrella_1 = x[5],
                                             estrella_2 = x[6])
                                         db.session.add(eurcomb)
-                                        current_app.logger.info('Update sorteo %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('fecha_sorteo'))
+                                        current_app.logger.info('Update sorteo %s - %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('dia_semana'), sorteo.get('fecha_sorteo'))
+                                        
                                 
                             if(su.game_id == 'LAQU'):
                                 partidos = sorteo.get('partidos')
@@ -141,15 +142,23 @@ class ImportingSorteos():
                                     part = QuinielaPartidos.exists_by_sorteo_id(sorteo_id)
                                     if part is None:
                                         for partido in partidos:
+                                            print('partido quiniela')
+                                            print(partido)
+                                            signo = partido.get('signo') if partido.get('signo') != None else ''
+                                            marcador = partido.get('marcador') if partido.get('marcador') != None else ''
+                                            fecha = partido.get('fecha') if partido.get('fecha') != None else ''
+                                            
                                             quipar = QuinielaPartidos(
                                                 sorteo_id = sorteo_id,
-                                                local = partido['local'],
-                                                visitante = partido['visitante'],
-                                                signo = partido['signo'],
-                                                marcador = partido['marcador']
+                                                local = partido.get('local'),
+                                                visitante = partido.get('visitante'),
+                                                signo = signo,
+                                                marcador = marcador,
+                                                fecha = fecha
                                                 )
                                             db.session.add(quipar)
-                                            current_app.logger.info('Update sorteo %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('fecha_sorteo'))
+                                            current_app.logger.info('Update sorteo %s - %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('dia_semana'), sorteo.get('fecha_sorteo'))
+
                                         
                             if(su.game_id == 'QGOL'):
                                 partidos = sorteo.get('partidos')
@@ -157,16 +166,22 @@ class ImportingSorteos():
                                     part = QuinigolPartidos.exists_by_sorteo_id(sorteo_id)
                                     if part is None:
                                         for partido in partidos:
+                                            print('partido quinigol')
+                                            print(partido)
+                                            signo = partido.get('signo') if partido.get('signo') != None else ''
+                                            marcador = partido.get('marcador') if partido.get('marcador') != None else ''
+                                            fecha = partido.get('fecha') if partido.get('fecha') != None else ''
                                             quipar = QuinigolPartidos(
                                                 sorteo_id = sorteo_id,
-                                                local = partido['local'],
-                                                visitante = partido['visitante'],
-                                                signo = partido['signo'],
-                                                marcador = partido['marcador']
+                                                local = partido.get('local'),
+                                                visitante = partido.get('visitante'),
+                                                signo = signo,
+                                                marcador = marcador,
+                                                fecha = fecha
                                                 )
                                             db.session.add(quipar)
-                                            print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
-                                            current_app.logger.info('Update sorteo %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('fecha_sorteo'))
+                                            current_app.logger.info('Update sorteo %s - %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('dia_semana'), sorteo.get('fecha_sorteo'))
+
                                            
                             if(su.game_id == 'LOTU'):
                                 combinacion = sorteo.get('combinacion')
@@ -185,8 +200,8 @@ class ImportingSorteos():
                                             caballo = x[6],
                                             reintegro = x[7])
                                         db.session.add(lotucomb)
-                                        print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
-                                        current_app.logger.info('Update sorteo %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('fecha_sorteo'))
+                                        current_app.logger.info('Update sorteo %s - %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('dia_semana'), sorteo.get('fecha_sorteo'))
+
                                                                     
                             if(su.game_id == 'QUPL'):
                                 combinacion = sorteo.get('combinacion')
@@ -203,8 +218,7 @@ class ImportingSorteos():
                                             bola_5 = x[4],
                                             bola_6 = x[5])
                                         db.session.add(qucomb)
-                                        print('update '+sorteo.get('id_sorteo')+ ' '+sorteo.get('dia_semana')+ ' ' +sorteo.get('game_id'))
-                                        current_app.logger.info('Update sorteo %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('fecha_sorteo'))
+                                        current_app.logger.info('Update sorteo %s - %s - %s - %s', sorteo.get('id_sorteo'), sorteo.get('game_id'), sorteo.get('dia_semana'), sorteo.get('fecha_sorteo'))
                                                        
                         try:
                             db.session.commit()

@@ -205,6 +205,7 @@ class QuinielaPartidos(db.Model):
     visitante = db.Column(db.String(60))
     signo = db.Column(db.String(8))
     marcador = db.Column(db.String(8))
+    fecha = db.Column(db.String(100))
 
     def __repr__(self):
         return f'<QuinielaPartidos {self.id}>'
@@ -212,7 +213,6 @@ class QuinielaPartidos(db.Model):
     @staticmethod
     def exists_by_sorteo_id(sorteo_id):
         result = QuinielaPartidos.query.filter(QuinielaPartidos.sorteo_id == sorteo_id)
-        print(result)
         if result:
             for sorteo in result:
                 return sorteo.id
@@ -227,6 +227,7 @@ class QuinigolPartidos(db.Model):
     visitante = db.Column(db.String(60))
     signo = db.Column(db.String(8))
     marcador = db.Column(db.String(8))
+    fecha = db.Column(db.String(100))
 
     def __repr__(self):
         return f'<QuinigolPartidos {self.id}>'
