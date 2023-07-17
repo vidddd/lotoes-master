@@ -132,6 +132,7 @@
                               <tr>
                                 <th>Local</th>
                                 <th>Visitante</th>
+                                <th>Fecha</th>
                                 <th>Signo</th>
                                 <th>Marcador</th>
                               </tr>
@@ -141,8 +142,9 @@
                               <tr>
                                 <td>{{ partido.local }}</td>
                                 <td>{{ partido.visitante }}</td>
-                                <td>{{ partido.signo }}</td>
-                                <td>{{ partido.marcador }}</td>
+                                <td>{{ partido.fecha|d('', true) }}</td>
+                                <td>{{ partido.signo|d('', true) }}</td>
+                                <td>{{ partido.marcador|d('', true) }}</td>
                               </tr>
                               {% endfor %}
                             </tbody>
@@ -159,6 +161,7 @@
                               <tr>
                                 <th>Local</th>
                                 <th>Visitante</th>
+                                <th>Fecha</th>
                                 <th>Signo</th>
                                 <th>Marcador</th>
                               </tr>
@@ -168,8 +171,9 @@
                               <tr>
                                 <td>{{ partido.local }}</td>
                                 <td>{{ partido.visitante }}</td>
-                                <td>{{ partido.signo }}</td>
-                                <td>{{ partido.marcador }}</td>
+                                <td>{{ partido.fecha|d('', true) }}</td>
+                                <td>{{ partido.signo|d('', true) }}</td>
+                                <td>{{ partido.marcador|d('', true) }}</td>
                               </tr>
                               {% endfor %}
                             </tbody>
